@@ -8,6 +8,10 @@ from symspellpy.symspellpy import SymSpell, Verbosity
 import pkg_resources
 import openai
 
+sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
+dictionary_path = pkg_resources.resource_filename("symspellpy", "frequency_dictionary_en_82_765.txt")
+sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1)
+
 # Load OpenAI API key from secrets
 openai_api_key = "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"
 

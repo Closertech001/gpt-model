@@ -140,8 +140,10 @@ if prompt := st.chat_input("Ask me anything about Crescent University..."):
     bert_response = find_response(prompt, dataset, question_embeddings, model)
 
     fallback_phrases = ["i'm sorry", "can you rephrase", "i don't understand"]
-    if any(p in bert_response.lower() for p in fallback_phrases):
-        final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)
+if any(p in bert_response.lower() for p in fallback_phrases):
+    with st.chat_message("assistant"):
+        st.markdown("_Fallback to smart assistant..._")
+    final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)
     else:
         final_response = bert_response
 

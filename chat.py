@@ -159,7 +159,7 @@ if prompt := st.chat_input("Ask me anything about Crescent University..."):
 
     if low_score_response or is_follow_up_query:
         with st.chat_message("assistant"):
-            st.markdown("_Fallback to smart assistant..._")
+            st.markdown("UNIVERSITY DATASET.txt")
         final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)
     else:
         final_response = bert_response

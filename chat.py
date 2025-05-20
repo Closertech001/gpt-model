@@ -144,8 +144,8 @@ if any(p in bert_response.lower() for p in fallback_phrases):
     with st.chat_message("assistant"):
         st.markdown("_Fallback to smart assistant..._")
     final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)
-    else:
-        final_response = bert_response
+else:
+    final_response = bert_response
 
     with st.chat_message("assistant"):
         st.markdown(final_response)

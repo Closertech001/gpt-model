@@ -1,0 +1,7 @@
+autocorrect
+streamlit
+torch
+pandas
+sentence-transformers
+symspellpy
+openai

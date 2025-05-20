@@ -8,11 +8,12 @@ from symspellpy.symspellpy import SymSpell, Verbosity
 import pkg_resources
 import openai
 
+# Setup spell correction
 sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
 dictionary_path = pkg_resources.resource_filename("symspellpy", "frequency_dictionary_en_82_765.txt")
 sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1)
 
-# Load OpenAI API key from secrets
+# Load OpenAI API key from Streamlit secrets
 openai.api_key = st.secrets["openai"]["api_key"]
 
 # Abbreviations dictionary
@@ -25,6 +26,13 @@ abbreviations = {
     "dept": "department", "admsn": "admission", "cresnt": "crescent", "uni": "university",
     "clg": "college", "sch": "school", "info": "information"
 }
+
+# Follow-up detection phrases
+FOLLOW_UP_PHRASES = [
+    "what about", "how about", "and then", "next",
+    "after that", "can you tell me more", "more info",
+    "continue", "explain further", "go on", "what happened after"
+]
 
 def normalize_text(text):
     text = text.lower()
@@ -41,6 +49,10 @@ def preprocess_text(text):
         suggestions = sym_spell.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
         corrected.append(suggestions[0].term if suggestions else word)
     return ' '.join(corrected)
+
+def is_follow_up(user_input):
+    user_input = user_input.lower()
+    return any(phrase in user_input for phrase in FOLLOW_UP_PHRASES)
 
 @st.cache_resource
 def load_model():
@@ -111,8 +123,10 @@ def gpt_response_with_memory(chat_history, current_input):
             temperature=0.7
         )
         return response['choices'][0]['message']['content'].strip()
-    except Exception as e:
+    except Exception:
         return "Sorry, there was an error using the smart assistant. Please try again later."
+
+# --- Streamlit UI ---
 
 st.set_page_config(page_title="🎓 Crescent University Chatbot", page_icon="🎓")
 st.title("🎓 Crescent University Chatbot")
@@ -140,7 +154,10 @@ if prompt := st.chat_input("Ask me anything about Crescent University..."):
     bert_response = find_response(prompt, dataset, question_embeddings, model)
 
     fallback_phrases = ["i'm sorry", "can you rephrase", "i don't understand"]
-    if any(p in bert_response.lower() for p in fallback_phrases):
+    low_score_response = any(p in bert_response.lower() for p in fallback_phrases)
+    is_follow_up_query = is_follow_up(prompt)
+
+    if low_score_response or is_follow_up_query:
         with st.chat_message("assistant"):
             st.markdown("_Fallback to smart assistant..._")
         final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)

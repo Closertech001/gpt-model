@@ -27,7 +27,6 @@ abbreviations = {
     "clg": "college", "sch": "school", "info": "information"
 }
 
-# Follow-up detection phrases
 FOLLOW_UP_PHRASES = [
     "what about", "how about", "and then", "next",
     "after that", "can you tell me more", "more info",
@@ -118,7 +117,7 @@ def gpt_response_with_memory(chat_history, current_input):
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-4",  # or "gpt-3.5-turbo"
+            model="gpt-4",
             messages=messages,
             temperature=0.7
         )
@@ -138,9 +137,13 @@ question_embeddings = model.encode(dataset['question'].tolist(), convert_to_tens
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
+if "last_topic" not in st.session_state:
+    st.session_state.last_topic = ""
+
 with st.sidebar:
     if st.button("🧹 Clear Chat"):
         st.session_state.chat_history = []
+        st.session_state.last_topic = ""
 
 for msg in st.session_state.chat_history:
     with st.chat_message(msg["role"]):
@@ -149,21 +152,28 @@ for msg in st.session_state.chat_history:
 if prompt := st.chat_input("Ask me anything about Crescent University..."):
     with st.chat_message("user"):
         st.markdown(prompt)
+
     st.session_state.chat_history.append({"role": "user", "content": prompt})
+    is_follow_up_query = is_follow_up(prompt)
+
+    # Update last_topic if it's a standalone valid question
+    if not is_follow_up_query:
+        st.session_state.last_topic = prompt
+
+    # Reframe prompt if it's a follow-up
+    if is_follow_up_query and st.session_state.last_topic:
+        prompt = f"{prompt} (referring to: {st.session_state.last_topic})"
 
     bert_response = find_response(prompt, dataset, question_embeddings, model)
 
     fallback_phrases = ["i'm sorry", "can you rephrase", "i don't understand"]
     low_score_response = any(p in bert_response.lower() for p in fallback_phrases)
-    is_follow_up_query = is_follow_up(prompt)
 
     if low_score_response or is_follow_up_query:
         final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)
     else:
         final_response = bert_response
-    
+
     with st.chat_message("assistant"):
         st.markdown(final_response)
-    
     st.session_state.chat_history.append({"role": "assistant", "content": final_response})
-    

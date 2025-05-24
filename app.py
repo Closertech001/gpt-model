@@ -26,6 +26,7 @@ FOLLOW_UP_PHRASES = [
 
 # ====== Initialize SymSpell for spelling correction =====
 sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
+sym_spell.load_dictionary("frequency_dictionary_en_82_765.txt", term_index=0, count_index=1)
 
 # Load dictionary file for SymSpell (download from https://github.com/wolfgarbe/SymSpell)
 dictionary_path = "frequency_dictionary_en_82_765.txt"

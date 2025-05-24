@@ -5,7 +5,7 @@ import json
 import os
 
 # ====== Initialize OpenAI Client ======
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("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"))
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource

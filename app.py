@@ -1,11 +1,11 @@
 import streamlit as st
 from sentence_transformers import SentenceTransformer, util
-import openai
+from openai import OpenAI  # updated import
 import json
 import os
 
-# ====== Configuration ======
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# ====== Initialize OpenAI Client ======
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource
@@ -44,7 +44,7 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     prompt = f"{context}\nUser's question: {user_question}\nAnswer:"
     messages.append({"role": "user", "content": prompt})
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
         messages=messages,
         temperature=0.5,

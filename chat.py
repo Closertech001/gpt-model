@@ -1,3 +1,17 @@
+import streamlit as st
+import pandas as pd
+import torch
+import random
+import re
+from sentence_transformers import SentenceTransformer, util
+from openai import OpenAI
+from symspellpy import SymSpell, Verbosity
+
+# Initialize sym_spell for spelling correction
+sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
+# Load dictionary for sym_spell here if you want (optional)
+# sym_spell.load_dictionary("frequency_dictionary_en_82_765.txt", term_index=0, count_index=1)
+
 # Abbreviations dictionary
 abbreviations = {
     "u": "you", "r": "are", "ur": "your", "ow": "how", "pls": "please", "plz": "please",
@@ -18,6 +32,7 @@ FOLLOW_UP_PHRASES = [
 def normalize_text(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9\s]', '', text)
+    # Remove repeating characters more than twice (e.g. sooo -> so)
     text = re.sub(r'(.)\1{2,}', r'\1', text)
     return text
 
@@ -81,6 +96,7 @@ def find_response(user_input, dataset, question_embeddings, model, threshold=0.6
         ])
 
     response = dataset.iloc[top_index]['response']
+    # Add slight uncertainty tone sometimes
     if random.random() < 0.2:
         uncertainty_phrases = [
             "I think ", "Maybe this helps: ", "Here's what I found: ",
@@ -88,6 +104,9 @@ def find_response(user_input, dataset, question_embeddings, model, threshold=0.6
         ]
         response = random.choice(uncertainty_phrases) + response
     return response
+
+# Initialize OpenAI client (ensure your OPENAI_API_KEY is set as environment variable)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def gpt_response_with_memory(chat_history, current_input):
     messages = [
@@ -98,12 +117,13 @@ def gpt_response_with_memory(chat_history, current_input):
     messages.append({"role": "user", "content": current_input})
 
     try:
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=messages,
-            temperature=0.7
+            temperature=0.7,
+            max_tokens=300
         )
-        return response['choices'][0]['message']['content'].strip()
+        return response.choices[0].message.content.strip()
     except Exception:
         return "Sorry, there was an error using the smart assistant. Please try again later."
 
@@ -159,3 +179,4 @@ if prompt := st.chat_input("Ask me anything about Crescent University..."):
     with st.chat_message("assistant"):
         st.markdown(final_response)
     st.session_state.chat_history.append({"role": "assistant", "content": final_response})
+

@@ -10,6 +10,7 @@ import openai
 
 # Load OpenAI API key from secrets
 openai.api_key = "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"
+
 # Load SymSpell
 sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
 dictionary_path = pkg_resources.resource_filename("symspellpy", "frequency_dictionary_en_82_765.txt")

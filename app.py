@@ -23,6 +23,9 @@ FOLLOW_UP_PHRASES = [
     "continue", "explain further", "go on", "what happened after"
 ]
 
+# Initialize sym_spell for spelling correction
+sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
+
 # ====== Greetings and responses ======
 greetings = [
     "hi", "hello", "hey", "hi there", "greetings", "how are you",

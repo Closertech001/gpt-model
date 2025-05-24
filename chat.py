@@ -1,22 +1,11 @@
 import streamlit as st
 from sentence_transformers import SentenceTransformer, util
-import pandas as pd
-import torch
+from openai import OpenAI
+import json
+import os
 import random
-import re
-from symspellpy.symspellpy import SymSpell, Verbosity
-import pkg_resources
-import openai
 
-# Load OpenAI API key from secrets
-openai.api_key = "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"
-
-# Load SymSpell
-sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
-dictionary_path = pkg_resources.resource_filename("symspellpy", "frequency_dictionary_en_82_765.txt")
-sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1)
-
-# Abbreviations dictionary
+# ====== Abbreviations dictionary and follow-up phrases ======
 abbreviations = {
     "u": "you", "r": "are", "ur": "your", "ow": "how", "pls": "please", "plz": "please",
     "tmrw": "tomorrow", "cn": "can", "wat": "what", "cud": "could", "shud": "should",
@@ -33,147 +22,128 @@ FOLLOW_UP_PHRASES = [
     "continue", "explain further", "go on", "what happened after"
 ]
 
-def normalize_text(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9\s]', '', text)
-    text = re.sub(r'(.)\1{2,}', r'\1', text)
-    return text
+# ====== Greetings and responses ======
+greetings = [
+    "hi", "hello", "hey", "hi there", "greetings", "how are you",
+    "how are you doing", "how's it going", "can we talk?",
+    "can we have a conversation?", "okay", "i'm fine", "i am fine"
+]
 
-def preprocess_text(text):
-    text = normalize_text(text)
-    words = text.split()
-    expanded = [abbreviations.get(word, word) for word in words]
-    corrected = []
-    for word in expanded:
-        suggestions = sym_spell.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
-        corrected.append(suggestions[0].term if suggestions else word)
-    return ' '.join(corrected)
+greeting_responses = [
+    "Hello!", "Hi there!", "Hey!", "Greetings!",
+    "I'm doing well, thank you!", "Sure pal", "Okay"
+]
 
-def is_follow_up(user_input):
-    user_input = user_input.lower()
-    return any(phrase in user_input for phrase in FOLLOW_UP_PHRASES)
+# ====== Initialize OpenAI Client ======
+client = OpenAI(api_key=os.getenv("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"))
 
+# ====== Load SentenceTransformer Model ======
 @st.cache_resource
 def load_model():
-    return SentenceTransformer('all-MiniLM-L6-v2')
-
-@st.cache_data
-def load_data():
-    qa_pairs = []
-    with open("UNIVERSITY DATASET.txt", 'r', encoding='utf-8') as file:
-        question, answer = None, None
-        for line in file:
-            line = line.strip()
-            if line.startswith("Q:"):
-                question = line[2:].strip()
-            elif line.startswith("A:"):
-                answer = line[2:].strip()
-                if question and answer:
-                    qa_pairs.append((question, answer))
-                    question, answer = None, None
-    return pd.DataFrame(qa_pairs, columns=["question", "response"])
-
-def find_response(user_input, dataset, question_embeddings, model, threshold=0.6):
-    processed_input = preprocess_text(user_input)
-
-    greetings = [
-        "hi", "hello", "hey", "hi there", "greetings", "how are you",
-        "how are you doing", "how's it going", "can we talk?",
-        "can we have a conversation?", "okay", "i'm fine", "i am fine"
-    ]
-    if processed_input in greetings:
-        return random.choice([
-            "Hello!", "Hi there!", "Hey!", "Greetings!",
-            "I'm doing well, thank you!", "Sure pal", "Okay"
-        ])
-
-    user_embedding = model.encode(processed_input, convert_to_tensor=True)
-    cos_scores = util.pytorch_cos_sim(user_embedding, question_embeddings)[0]
-    top_score = torch.max(cos_scores).item()
-    top_index = torch.argmax(cos_scores).item()
-
-    if top_score < threshold:
-        return random.choice([
-            "I'm sorry, I don't understand your question.",
-            "Can you rephrase your question?"
-        ])
-
-    response = dataset.iloc[top_index]['response']
-    if random.random() < 0.2:
-        uncertainty_phrases = [
-            "I think ", "Maybe this helps: ", "Here's what I found: ",
-            "Possibly: ", "It could be: "
-        ]
-        response = random.choice(uncertainty_phrases) + response
-    return response
-
-def gpt_response_with_memory(chat_history, current_input):
-    messages = [
-        {"role": "system", "content": "You are a helpful assistant for Crescent University. Use past conversation context to answer clearly and politely."}
-    ]
-    for chat in chat_history:
-        messages.append({"role": chat["role"], "content": chat["content"]})
-    messages.append({"role": "user", "content": current_input})
-
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=messages,
-            temperature=0.7
-        )
-        return response['choices'][0]['message']['content'].strip()
-    except Exception:
-        return "Sorry, there was an error using the smart assistant. Please try again later."
-
-# --- Streamlit UI ---
-
-st.set_page_config(page_title="🎓 Crescent University Chatbot", page_icon="🎓")
-st.title("🎓 Crescent University Chatbot")
+    return SentenceTransformer("all-MiniLM-L6-v2")
 
 model = load_model()
-dataset = load_data()
-question_embeddings = model.encode(dataset['question'].tolist(), convert_to_tensor=True)
+
+# ====== Load Q&A Dataset ======
+@st.cache_resource
+def load_data():
+    with open("qa_dataset.json", "r") as f:
+        qa_pairs = json.load(f)
+    questions = [item["question"] for item in qa_pairs]
+    answers = [item["answer"] for item in qa_pairs]
+    embeddings = model.encode(questions, convert_to_tensor=True)
+    return qa_pairs, questions, answers, embeddings
+
+qa_pairs, questions, answers, question_embeddings = load_data()
+
+# ====== Helper functions ======
+
+def expand_abbreviations(text):
+    words = text.lower().split()
+    expanded_words = [abbreviations.get(word, word) for word in words]
+    return " ".join(expanded_words)
+
+def is_follow_up(text):
+    text_lower = text.lower()
+    return any(phrase in text_lower for phrase in FOLLOW_UP_PHRASES)
+
+def check_greeting(user_input):
+    processed_input = user_input.lower().strip()
+    if processed_input in greetings:
+        return random.choice(greeting_responses)
+    return None
+
+# ====== Semantic Search ======
+def find_similar_questions(user_input, top_k=3):
+    query_embedding = model.encode(user_input, convert_to_tensor=True)
+    hits = util.semantic_search(query_embedding, question_embeddings, top_k=top_k)[0]
+    return [(questions[hit['corpus_id']], answers[hit['corpus_id']]) for hit in hits]
+
+# ====== GPT Answer Generation ======
+def generate_gpt_answer(user_question, top_matches, chat_history):
+    context = "\n".join([f"Q: {q}\nA: {a}" for q, a in top_matches])
+    messages = [{"role": "system", "content": "You are a helpful assistant for Crescent University."}]
+
+    for turn in chat_history:
+        messages.append({"role": "user", "content": turn["user"]})
+        messages.append({"role": "assistant", "content": turn["bot"]})
+
+    prompt = f"{context}\nUser's question: {user_question}\nAnswer:"
+    messages.append({"role": "user", "content": prompt})
+
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=messages,
+        temperature=0.5,
+        max_tokens=300
+    )
+    return response.choices[0].message.content.strip()
+
+# ====== Streamlit UI ======
+st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")
+st.title("🎓 Crescent University Chatbot")
+st.markdown("Ask any question about the university — even vague or incomplete!")
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-if "last_topic" not in st.session_state:
-    st.session_state.last_topic = ""
+user_input = st.text_input("Ask a question...")
 
-with st.sidebar:
-    if st.button("🧹 Clear Chat"):
-        st.session_state.chat_history = []
-        st.session_state.last_topic = ""
-
-for msg in st.session_state.chat_history:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
-
-if prompt := st.chat_input("Ask me anything about Crescent University..."):
-    with st.chat_message("user"):
-        st.markdown(prompt)
-
-    st.session_state.chat_history.append({"role": "user", "content": prompt})
-    is_follow_up_query = is_follow_up(prompt)
-
-    # Update last_topic if it's a standalone valid question
-    if not is_follow_up_query:
-        st.session_state.last_topic = prompt
-
-    # Reframe prompt if it's a follow-up
-    if is_follow_up_query and st.session_state.last_topic:
-        prompt = f"{prompt} (referring to: {st.session_state.last_topic})"
-
-    bert_response = find_response(prompt, dataset, question_embeddings, model)
-
-    fallback_phrases = ["i'm sorry", "can you rephrase", "i don't understand"]
-    low_score_response = any(p in bert_response.lower() for p in fallback_phrases)
-
-    if low_score_response or is_follow_up_query:
-        final_response = gpt_response_with_memory(st.session_state.chat_history, prompt)
+if user_input:
+    # First check greetings
+    greeting_reply = check_greeting(user_input)
+    if greeting_reply:
+        st.markdown(f"**Bot:** {greeting_reply}")
+        st.session_state.chat_history.append({
+            "user": user_input,
+            "bot": greeting_reply
+        })
     else:
-        final_response = bert_response
+        # Expand abbreviations
+        expanded_input = expand_abbreviations(user_input)
 
-    with st.chat_message("assistant"):
-        st.markdown(final_response)
-    st.session_state.chat_history.append({"role": "assistant", "content": final_response})
+        # Check follow-up phrases (optional usage here, just info)
+        if is_follow_up(expanded_input):
+            st.info("Detected follow-up question, continuing the conversation...")
+
+        with st.spinner("Thinking..."):
+            similar_qas = find_similar_questions(expanded_input)
+            answer = generate_gpt_answer(expanded_input, similar_qas, st.session_state.chat_history)
+
+            st.markdown(f"**You:** {user_input}")
+            st.markdown(f"**Bot:** {answer}")
+
+            st.session_state.chat_history.append({
+                "user": user_input,
+                "bot": answer
+            })
+
+if st.session_state.chat_history:
+    st.markdown("### 🗨️ Chat History")
+    for turn in st.session_state.chat_history:
+        st.markdown(f"**You:** {turn['user']}")
+        st.markdown(f"**Bot:** {turn['bot']}")
+
+if st.button("🔁 Reset Chat"):
+    st.session_state.chat_history = []
+    st.experimental_rerun()

@@ -2,6 +2,8 @@ import re
 import os
 import json
 import random
+import openai
+import time
 import streamlit as st
 
 # ✅ MUST be first Streamlit command
@@ -10,7 +12,7 @@ st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")
 from symspellpy.symspellpy import SymSpell, Verbosity
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
-import time
+
 
 # ====== Abbreviations dictionary and follow-up phrases ======
 abbreviations = {

@@ -10,6 +10,7 @@ st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")
 from symspellpy.symspellpy import SymSpell, Verbosity
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
+import time
 
 # ====== Abbreviations dictionary and follow-up phrases ======
 abbreviations = {
@@ -113,13 +114,17 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     prompt = f"{context}\nUser's question: {user_question}\nAnswer:"
     messages.append({"role": "user", "content": prompt})
 
-    response = client.chat.completions.create(
-        model="gpt-4.1",
-        messages=messages,
-        temperature=0.5,
-        max_tokens=300
-    )
-    return response.choices[0].message.content.strip()
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4.1",
+            messages=messages,
+            temperature=0.5,
+            max_tokens=300
+        )
+        return response.choices[0].message.content.strip()
+    
+    except openai.RateLimitError:
+        return "⚠️ The system is currently under heavy load or you've reached your usage limit. Please wait and try again shortly."
 
 # ====== Streamlit UI ======
 st.title("🎓 Crescent University Chatbot")

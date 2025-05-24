@@ -1,8 +1,4 @@
-autocorrect
 streamlit
-torch
-pandas
-sentence-transformers
-symspellpy
 openai
-
+sentence-transformers
+torch

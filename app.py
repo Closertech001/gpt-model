@@ -1,10 +1,11 @@
-
+import re
+import os
+import json
+import random
 import streamlit as st
+from symspellpy.symspellpy import SymSpell, Verbosity
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
-import json
-import os
-import random
 
 # ====== Abbreviations dictionary and follow-up phrases ======
 abbreviations = {
@@ -23,8 +24,13 @@ FOLLOW_UP_PHRASES = [
     "continue", "explain further", "go on", "what happened after"
 ]
 
-# Initialize sym_spell for spelling correction
+# ====== Initialize SymSpell for spelling correction =====
 sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
+
+# Load dictionary file for SymSpell (download from https://github.com/wolfgarbe/SymSpell)
+dictionary_path = "frequency_dictionary_en_82_765.txt"
+if not sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1):
+    st.error(f"Failed to load dictionary file for SymSpell: {dictionary_path}")
 
 def normalize_text(text):
     text = text.lower()
@@ -47,10 +53,6 @@ def is_follow_up(user_input):
     user_input = user_input.lower()
     return any(phrase in user_input for phrase in FOLLOW_UP_PHRASES)
 
-@st.cache_resource
-def load_model():
-    return SentenceTransformer('all-MiniLM-L6-v2')
-
 # ====== Greetings and responses ======
 greetings = [
     "hi", "hello", "hey", "hi there", "greetings", "how are you",
@@ -63,8 +65,14 @@ greeting_responses = [
     "I'm doing well, thank you!", "Sure pal", "Okay"
 ]
 
+def check_greeting(user_input):
+    processed_input = user_input.lower().strip()
+    if processed_input in greetings:
+        return random.choice(greeting_responses)
+    return None
+
 # ====== Initialize OpenAI Client ======
-client = OpenAI(api_key=os.getenv("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"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource
@@ -76,7 +84,7 @@ model = load_model()
 # ====== Load Q&A Dataset ======
 @st.cache_resource
 def load_data():
-    with open("qa_dataset.json", "r") as f:
+    with open("qa_dataset.json", "r", encoding="utf-8") as f:
         qa_pairs = json.load(f)
     questions = [item["question"] for item in qa_pairs]
     answers = [item["answer"] for item in qa_pairs]
@@ -84,23 +92,6 @@ def load_data():
     return qa_pairs, questions, answers, embeddings
 
 qa_pairs, questions, answers, question_embeddings = load_data()
-
-# ====== Helper functions ======
-
-def expand_abbreviations(text):
-    words = text.lower().split()
-    expanded_words = [abbreviations.get(word, word) for word in words]
-    return " ".join(expanded_words)
-
-def is_follow_up(text):
-    text_lower = text.lower()
-    return any(phrase in text_lower for phrase in FOLLOW_UP_PHRASES)
-
-def check_greeting(user_input):
-    processed_input = user_input.lower().strip()
-    if processed_input in greetings:
-        return random.choice(greeting_responses)
-    return None
 
 # ====== Semantic Search ======
 def find_similar_questions(user_input, top_k=3):
@@ -148,16 +139,16 @@ if user_input:
             "bot": greeting_reply
         })
     else:
-        # Expand abbreviations
-        expanded_input = expand_abbreviations(user_input)
+        # Preprocess user input
+        preprocessed_input = preprocess_text(user_input)
 
-        # Check follow-up phrases (optional usage here, just info)
-        if is_follow_up(expanded_input):
+        # Check for follow-up phrases (optional usage here)
+        if is_follow_up(preprocessed_input):
             st.info("Detected follow-up question, continuing the conversation...")
 
         with st.spinner("Thinking..."):
-            similar_qas = find_similar_questions(expanded_input)
-            answer = generate_gpt_answer(expanded_input, similar_qas, st.session_state.chat_history)
+            similar_qas = find_similar_questions(preprocessed_input)
+            answer = generate_gpt_answer(preprocessed_input, similar_qas, st.session_state.chat_history)
 
             st.markdown(f"**You:** {user_input}")
             st.markdown(f"**Bot:** {answer}")

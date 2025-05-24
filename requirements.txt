@@ -1,4 +1,7 @@
 streamlit
-openai
 sentence-transformers
+openai
 torch
+symspellpy
+numpy
+pandas

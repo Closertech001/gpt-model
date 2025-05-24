@@ -125,9 +125,6 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
         )
         return response.choices[0].message.content.strip()
     
-    except openai.RateLimitError:
-        return "⚠️ The system is currently under heavy load or you've reached your usage limit. Please wait and try again shortly."
-
 # ====== Streamlit UI ======
 st.title("🎓 Crescent University Chatbot")
 st.markdown("Ask any question about the university — even vague or incomplete!")

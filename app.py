@@ -3,6 +3,10 @@ import os
 import json
 import random
 import streamlit as st
+
+# ✅ MUST be first Streamlit command
+st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")
+
 from symspellpy.symspellpy import SymSpell, Verbosity
 from sentence_transformers import SentenceTransformer, util
 from openai import OpenAI
@@ -24,11 +28,8 @@ FOLLOW_UP_PHRASES = [
     "continue", "explain further", "go on", "what happened after"
 ]
 
-# ====== Initialize SymSpell for spelling correction =====
+# ====== Initialize SymSpell for spelling correction ======
 sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
-sym_spell.load_dictionary("frequency_dictionary_en_82_765.txt", term_index=0, count_index=1)
-
-# Load dictionary file for SymSpell (download from https://github.com/wolfgarbe/SymSpell)
 dictionary_path = "frequency_dictionary_en_82_765.txt"
 if not sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1):
     st.error(f"Failed to load dictionary file for SymSpell: {dictionary_path}")
@@ -36,7 +37,6 @@ if not sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1):
 def normalize_text(text):
     text = text.lower()
     text = re.sub(r'[^a-z0-9\s]', '', text)
-    # Remove repeating characters more than twice (e.g. sooo -> so)
     text = re.sub(r'(.)\1{2,}', r'\1', text)
     return text
 
@@ -74,6 +74,7 @@ def check_greeting(user_input):
 
 # ====== Initialize OpenAI Client ======
 api_key="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"
+client = OpenAI(api_key=api_key)
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource
@@ -121,7 +122,6 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     return response.choices[0].message.content.strip()
 
 # ====== Streamlit UI ======
-st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")
 st.title("🎓 Crescent University Chatbot")
 st.markdown("Ask any question about the university — even vague or incomplete!")
 
@@ -131,7 +131,6 @@ if "chat_history" not in st.session_state:
 user_input = st.text_input("Ask a question...")
 
 if user_input:
-    # First check greetings
     greeting_reply = check_greeting(user_input)
     if greeting_reply:
         st.markdown(f"**Bot:** {greeting_reply}")
@@ -140,10 +139,7 @@ if user_input:
             "bot": greeting_reply
         })
     else:
-        # Preprocess user input
         preprocessed_input = preprocess_text(user_input)
-
-        # Check for follow-up phrases (optional usage here)
         if is_follow_up(preprocessed_input):
             st.info("Detected follow-up question, continuing the conversation...")
 

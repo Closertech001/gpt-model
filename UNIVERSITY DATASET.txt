@@ -110,7 +110,10 @@ Q: What is the full meaning of CICOT
 A: College of Information and Communication Technology
 
 Q: What is the full meaning of CONAS
-A: College of Natural and Applied Sciences
+A: College of Natural and Applied Science
+
+Q: What is the full meaning of COHES
+A: College of Health Sciences
 
 Q: What is the matriculation requirement?
 A: Proper registration | Taking the matriculation oath | Allotment of matriculation number | Registration closes after matriculation

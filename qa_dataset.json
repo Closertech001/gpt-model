@@ -24,12 +24,12 @@
     "answer": "A book (education) and a crescent (Islam) signify knowledge guided by divine principles."
   },
   {
-    "question": "What is the university\u2019s residential policy?",
+    "question": "What is the university residential policy?",
     "answer": "All students must reside on campus without exemptions."
   },
   {
     "question": "What is the motto of the University?",
-    "answer": "The motto of the University is \"Knowledge and Faith,\" emphasizing academic excellence in a Godly way."
+    "answer": "The motto of the University is Knowledge and Faith emphasizing academic excellence in a Godly way."
   },
   {
     "question": "When is the University's Founder's Day celebrated?",
@@ -42,10 +42,6 @@
   {
     "question": "What is the college color for Final Year Projects in the College of Health Sciences?",
     "answer": "Navy Blue."
-  },
-  {
-    "question": "What is the university\u2019s residential policy for students?",
-    "answer": "It is compulsory for all students to reside on campus."
   },
   {
     "question": "What is the faculty profile like?",
@@ -65,19 +61,19 @@
   },
   {
     "question": "What is the academic session structure?",
-    "answer": "Two semesters per year (Sept\u2013Jan and Feb\u2013June). | Long vacation (July\u2013Sept) for SIWES/training. | 15-week semesters with breaks and assessments."
+    "answer": "Two semesters per year | Long vacation (July-Sept) for SIWES/training. | 15-week semesters with breaks and assessments."
   },
   {
     "question": "What are course workload limits?",
-    "answer": "15\u201317 units per semester (standard). | Add/drop allowed within 3 weeks. | Fewer units allowed for Final Year Non-Graduating students."
+    "answer": "15-17 units per semester (standard). | Add/drop allowed within 3 weeks. | Fewer units allowed for Final Year Non-Graduating students."
   },
   {
     "question": "What are the exam regulations?",
-    "answer": "Must attend 70% of classes to write exams. | Exams last 1\u20133 hours. | Students can only repeat failed courses. | Grades range from A (5 points) to F (0 points). | CGPA determines academic standing."
+    "answer": "Must attend 70% of classes to write exams. | Exams last 1-2 hours. | Students can only repeat failed courses. | Grades range from A (5 points) to F (0 points). | CGPA determines academic standing."
   },
   {
     "question": "What is the degree classification system?",
-    "answer": "First Class: 4.50 \u2013 5.00 CGPA | Second Class Upper: 3.50 \u2013 4.49 | Second Class Lower: 2.40 \u2013 3.49 | Third Class: 1.50 \u2013 2.39 | Pass: 1.00 \u2013 1.49"
+    "answer": "First Class: 4.50 - 5.00 CGPA | Second Class Upper: 3.50 - 4.49 | Second Class Lower: 2.40 - 3.49 | Third Class: 1.50 - 2.39 | Pass: 1.00 - 1.49"
   },
   {
     "question": "What are the graduation requirements?",
@@ -85,7 +81,7 @@
   },
   {
     "question": "Are there any student support or development activities?",
-    "answer": "Yes\u2014career counseling, skill training, industrial visits, science fairs, etc."
+    "answer": "Yes, career counseling, skill training, industrial visits, science fairs, etc."
   },
   {
     "question": "What 21st-century skills are developed?",
@@ -193,11 +189,11 @@
   },
   {
     "question": "What is the tuition fee for returning Political Science & I.R. students?",
-    "answer": "\u20a6735,000 plus other fees (portal, departmental, parents forum, IMASA)."
+    "answer": "735,000 plus other fees (portal, departmental, parents forum, IMASA)."
   },
   {
     "question": "What is the tuition fee for freshers in Political Science & I.R.?",
-    "answer": "\u20a6868,000, plus \u20a610,000 (screening form), \u20a650,000 (acceptance), and \u20a610,000 (parent forum)."
+    "answer": "868,000, plus 10,000 (screening form), 50,000 (acceptance), and 10,000 (parent forum)."
   },
   {
     "question": "What is included in the school fees?",
@@ -205,11 +201,11 @@
   },
   {
     "question": "Are there additional compulsory payments?",
-    "answer": "\u20a65,000 for department association (at department). | \u20a62,000 for IMASA (Student General Association) \u2013 First Bank Acct No: 2022508694. | \u20a65,000 portal registration fee."
+    "answer": "5,000 for department association (at department). | 2,000 for IMASA (Student General Association) First Bank Acct No: 2022508694. | 5,000 portal registration fee."
   },
   {
     "question": "What are the bank details for paying school fees?",
-    "answer": "Payments can be made to Crescent University through: 1. UBA \u2013 1007903011 | 2. Zenith \u2013 1010431785 | 3. First Bank \u2013 2012145317 | 4. GTBank \u2013 0032618306 | 5. Lotus \u2013 1000427994 | 6. Jaiz Bank \u2013 0001993958"
+    "answer": "Payments can be made to Crescent University through: 1. UBA 1007903011 | 2. Zenith 1010431785 | 3. First Bank 2012145317 | 4. GTBank 0032618306 | 5. Lotus 1000427994 | 6. Jaiz Bank 0001993958"
   },
   {
     "question": "What is the minimum payment required at the start of 1st semester?",
@@ -217,15 +213,19 @@
   },
   {
     "question": "What are the penalties for late payment of tuition?",
-    "answer": "A penalty of \u20a610,000 per month will be charged for late payment."
+    "answer": "A penalty of 10,000 per month will be charged for late payment."
   },
   {
     "question": "Are there private hostel options available?",
-    "answer": "Yes, at an additional cost of \u20a6150,000\u2013\u20a6250,000. Contact: Male: Mr. Lawal \u2013 08039629231 | Female: Mrs. Popoola \u2013 08183519027 | Student Affairs: 08030889805"
+    "answer": "Yes, at an additional cost of 150,000 - 250,000"
+  },
+  {
+    "question": "Who are in charge of the hostel?"
+    "answer": "Contact: Male: Mr. Lawal 08039629231 | Female: Mrs. Popoola 08183519027 | Student Affairs: 08030889805"
   },
   {
     "question": "Who can be contacted for further admission inquiries?",
-    "answer": "Call the Admission Officer at 08030644731 or 08038362771. ADDITIONAL ACADEMIC EVENTS & POLICIES"
+    "answer": "Call the Admission Officer at 08030644731 or 08038362771."
   },
   {
     "question": "When is Matriculation ceremony?",
@@ -241,47 +241,35 @@
   },
   {
     "question": "What are the semester examination periods?",
-    "answer": "First Semester Exams: February | Second Semester Exams: June \u2013 July EXTENDED SCHOOL FEES & PAYMENT INFORMATION"
-  },
-  {
-    "question": "What is the complete breakdown of fees for returning Political Science & International Relations students?",
-    "answer": "\u20a6735,000 tuition + \u20a65,000 portal + \u20a65,000 departmental + \u20a610,000 parent forum + \u20a62,000 IMASA."
+    "answer": "First Semester Exams: February | Second Semester Exams: June - July EXTENDED"
   },
   {
     "question": "What fees do Political Science & I.R. freshers pay in total?",
-    "answer": "\u20a6868,000 tuition + \u20a610,000 screening form + \u20a650,000 acceptance + \u20a610,000 parent forum."
+    "answer": "868,000 tuition + 10,000 screening form + 50,000 acceptance + 10,000 parent forum."
   },
   {
     "question": "Are departmental association fees included in school fees?",
-    "answer": "No. Students must pay \u20a65,000 directly to their departments."
+    "answer": "No. Students must pay 5,000 directly to their departments."
   },
   {
     "question": "How much is the IMASA fee and where is it paid?",
-    "answer": "\u20a62,000, payable to First Bank, Account Number: 2022508694."
-  },
-  {
-    "question": "What are the approved university bank accounts for tuition payments?",
-    "answer": "1. UBA \u2013 1007903011 | 2. Zenith Bank \u2013 1010431785 | 3. First Bank \u2013 2012145317 | 4. GTBank \u2013 0032618306 | 5. Lotus Bank \u2013 1000427994 | 6. Jaiz Bank \u2013 0001993958"
+    "answer": "2,000, payable to First Bank, Account Number: 2022508694."
   },
   {
     "question": "Can students pay fees in installments?",
-    "answer": "Yes, 70% of fees is required at the start of 1st semester, and 30% at the start of 2nd semester. ACCOMMODATION INFORMATION"
+    "answer": "Yes, 70% of fees is required at the start of 1st semester, and 30% at the start of 2nd semester."
   },
   {
     "question": "Is there private hostel accommodation on campus?",
-    "answer": "Yes. Cost ranges from \u20a6150,000 to \u20a6250,000 depending on the type."
+    "answer": "Yes. Cost ranges from 150,000 to 250,000 depending on the type."
   },
   {
     "question": "Who can students contact for hostel inquiries?",
-    "answer": "Male Hostel: Mr. Lawal \u2013 08039629231 | Female Hostel: Mrs. Popoola \u2013 08183519027 | Student Affairs: 08030889805"
+    "answer": "Male Hostel: Mr. Lawal 08039629231 | Female Hostel: Mrs. Popoola 08183519027 | Student Affairs: 08030889805"
   },
   {
-    "question": "Is private hostel fee included in any course\u2019s tuition?",
+    "question": "Is private hostel fee included in any course tuition?",
     "answer": "Yes, it is included in Nursing tuition."
-  },
-  {
-    "question": "Who should be contacted for further admission inquiries?",
-    "answer": "Admission Officer: 08030644731 or 08038362771 DEPARTMENT OF ANATOMY"
   },
   {
     "question": "What is the meaning of COHES?",
@@ -305,11 +293,11 @@
   },
   {
     "question": "Who are the academic staff in the Department of Anatomy?",
-    "answer": "Professors: Olusola Atilade Adeeyo, Kehinde T. Adenowo; Senior Lecturers: D.A. Adekomi, O.O. Ogedengbe, P.B. Fakunle, K.A. Iteire; Lecturer I: O.A. Udi, B.S. Ogunlade, P. Akwu-Bala, O.A. Morakinyo; Lecturer II: A.A. Oyeleke."
+    "answer": "Professors: Olusola Atilade Adeeyo, Kehinde T. Adenowo | Senior Lecturers: D.A. Adekomi, O.O. Ogedengbe, P.B. Fakunle, K.A. Iteire | Lecturer I: O.A. Udi, B.S. Ogunlade, P. Akwu-Bala, O.A. Morakinyo | Lecturer II: A.A. Oyeleke."
   },
   {
     "question": "Who are the technical and non-academic staff in the Department of Anatomy?",
-    "answer": "Technical: Okeniran O.S. (Senior Technologist). Non-academic: Akindele V.O. (Secretary), Adekunle I.A. (Clerical Officer)."
+    "answer": "Technical: Okeniran O.S. (Senior Technologist) | Non-academic: Akindele V.O. (Secretary), Adekunle I.A. (Clerical Officer)."
   },
   {
     "question": "What are the UTME admission requirements for Department of Anatomy?",
@@ -325,11 +313,7 @@
   },
   {
     "question": "What are the graduation requirements for B.Sc. Anatomy?",
-    "answer": "1. 150 credits for UTME, 120 credits for Direct Entry. | 2. Complete all coursework, SIWES, seminars, and projects. | 3. Register 16\u201325 units per semester."
-  },
-  {
-    "question": "How is the degree classified?",
-    "answer": "First Class: 4.50\u20135.00 | Second Class Upper: 3.50\u20134.49 | Second Class Lower: 2.50\u20133.49 | Third Class: 1.40\u20132.39 | Pass: 1.00\u20131.49"
+    "answer": "1. 150 credits for UTME, 120 credits for Direct Entry. | 2. Complete all coursework, SIWES, seminars, and projects. | 3. Register 16-25 units per semester."
   },
   {
     "question": "What are some courses at 100 Level in Anatomy?",
@@ -349,7 +333,7 @@
   },
   {
     "question": "Is SIWES included in the program of Department of Anatomy?",
-    "answer": "Yes, SIWES is included in both 300 Level (SIWES I) and 400 Level (SIWES II). DEPARTMENT OF ACCOUNTING"
+    "answer": "Yes, SIWES is included in both 300 Level (SIWES I) and 400 Level (SIWES II)."
   },
   {
     "question": "What is the focus of the Department of Accounting?",
@@ -361,11 +345,11 @@
   },
   {
     "question": "What are the UTME admission requirements for the Accounting program?",
-    "answer": "Candidates must have five (5) O\u2019level credits including English Language, Mathematics, Economics, and any two relevant subjects, in not more than two sittings. They must also pass the UTME with appropriate subjects."
+    "answer": "Candidates must have five (5) Olevel credits including English Language, Mathematics, Economics, and any two relevant subjects, in not more than two sittings. They must also pass the UTME with appropriate subjects."
   },
   {
     "question": "What are the Direct Entry requirements for the Accounting program?",
-    "answer": "Candidates should have at least two A\u2019level passes in Accounting, Economics, or Business Management, or possess ND/NCE/HND in relevant disciplines with at least upper credit."
+    "answer": "Candidates should have at least two Alevel passes in Accounting, Economics, or Business Management, or possess ND/NCE/HND in relevant disciplines with at least upper credit."
   },
   {
     "question": "What are the graduation requirements for Accounting students?",
@@ -393,11 +377,11 @@
   },
   {
     "question": "What courses are offered in 100 Level Accounting?",
-    "answer": "Courses include Principles of Economics I & II, Use of English, Introduction to Business, Introduction to Financial Accounting I & II, Business Mathematics, Nigerian Peoples and Culture, and Philosophy and Logic. 200 LEVEL"
+    "answer": "Courses include Principles of Economics I & II, Use of English, Introduction to Business, Introduction to Financial Accounting I & II, Business Mathematics, Nigerian Peoples and Culture, and Philosophy and Logic."
   },
   {
     "question": "What are the core courses at 200 Level Accounting?",
-    "answer": "Courses include Company Law, Financial Accounting, Business Law, Principles of Management, Cost Accounting, and Business Communication. 300 LEVEL"
+    "answer": "Courses include Company Law, Financial Accounting, Business Law, Principles of Management, Cost Accounting, and Business Communication."
   },
   {
     "question": "What do students study at 300 Level Accounting?",
@@ -405,11 +389,11 @@
   },
   {
     "question": "Is SIWES included in 300 Level Accounting?",
-    "answer": "Yes, the Student Industrial Work Experience Scheme (SIWES) is taken at this level. 400 LEVEL"
+    "answer": "Yes, the Student Industrial Work Experience Scheme (SIWES) is taken at this level."
   },
   {
     "question": "What courses are offered in the final year (400 Level) Accounting?",
-    "answer": "Courses include Advanced Taxation, Auditing and Investigation, Public Sector Accounting, Corporate Reporting, Management Theory, Strategic Management, and a Research Project. DEPARTMENT OF ARCHITECTURE"
+    "answer": "Courses include Advanced Taxation, Auditing and Investigation, Public Sector Accounting, Corporate Reporting, Management Theory, Strategic Management, and a Research Project."
   },
   {
     "question": "What is the college color for Final Year Projects in Architecture?",
@@ -457,19 +441,19 @@
   },
   {
     "question": "What are the graduation requirements for B.Sc. Architecture?",
-    "answer": "120 credits (UTME), 90 or 60 (Direct Entry), and successful completion of all required courses and SIWES. 100 Level:"
+    "answer": "120 credits (UTME), 90 or 60 (Direct Entry), and successful completion of all required courses and SIWES."
   },
   {
     "question": "What courses are offered in 100 Level Architecture?",
-    "answer": "Communication in English, General Physics, Elementary Mathematics, Freehand Drawing, Graphics Communication, Introduction to Architecture & Environmental Sciences. 200 Level:"
+    "answer": "Communication in English, General Physics, Elementary Mathematics, Freehand Drawing, Graphics Communication, Introduction to Architecture & Environmental Sciences."
   },
   {
     "question": "What courses are offered in 200 Level Architecture?",
-    "answer": "CAD, Design Studios I & II, Building Components & Methods, Islamic Architecture, Site Planning, Modeling Studio, Surveying. 300 Level:"
+    "answer": "CAD, Design Studios I & II, Building Components & Methods, Islamic Architecture, Site Planning, Modeling Studio, Surveying."
   },
   {
     "question": "What courses are offered in 300 Level Architecture?",
-    "answer": "Research Methods, Design Studios III, Structures, Services, Building Information Modelling, Urban Design, SIWES, Entrepreneurship for Architects. 400 Level:"
+    "answer": "Research Methods, Design Studios III, Structures, Services, Building Information Modelling, Urban Design, SIWES, Entrepreneurship for Architects."
   },
   {
     "question": "What courses are offered in 400 Level Architecture?",
@@ -477,7 +461,7 @@
   },
   {
     "question": "Is SIWES part of the curriculum of the department of Architecture?",
-    "answer": "Yes, a three-month SIWES is integrated at 300 Level. DEPARTMENT OF BIOLOGICAL SCIENCES (MICROBIOLOGY)"
+    "answer": "Yes, a three-month SIWES is integrated at 300 Level."
   },
   {
     "question": "What is the college color for Final Year Projects in Biological Sciences(Microbiology)?",

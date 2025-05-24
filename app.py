@@ -1,11 +1,42 @@
+
 import streamlit as st
 from sentence_transformers import SentenceTransformer, util
-from openai import OpenAI  # updated import
+from openai import OpenAI
 import json
 import os
+import random
+
+# ====== Abbreviations dictionary and follow-up phrases ======
+abbreviations = {
+    "u": "you", "r": "are", "ur": "your", "ow": "how", "pls": "please", "plz": "please",
+    "tmrw": "tomorrow", "cn": "can", "wat": "what", "cud": "could", "shud": "should",
+    "wud": "would", "abt": "about", "bcz": "because", "bcoz": "because", "btw": "between",
+    "asap": "as soon as possible", "idk": "i don't know", "imo": "in my opinion",
+    "msg": "message", "doc": "document", "d": "the", "yr": "year", "sem": "semester",
+    "dept": "department", "admsn": "admission", "cresnt": "crescent", "uni": "university",
+    "clg": "college", "sch": "school", "info": "information"
+}
+
+FOLLOW_UP_PHRASES = [
+    "what about", "how about", "and then", "next",
+    "after that", "can you tell me more", "more info",
+    "continue", "explain further", "go on", "what happened after"
+]
+
+# ====== Greetings and responses ======
+greetings = [
+    "hi", "hello", "hey", "hi there", "greetings", "how are you",
+    "how are you doing", "how's it going", "can we talk?",
+    "can we have a conversation?", "okay", "i'm fine", "i am fine"
+]
+
+greeting_responses = [
+    "Hello!", "Hi there!", "Hey!", "Greetings!",
+    "I'm doing well, thank you!", "Sure pal", "Okay"
+]
 
 # ====== Initialize OpenAI Client ======
-client = OpenAI(api_key=os.getenv("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"))
+client = OpenAI(api_key=os.getenv("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"))
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource
@@ -26,6 +57,23 @@ def load_data():
 
 qa_pairs, questions, answers, question_embeddings = load_data()
 
+# ====== Helper functions ======
+
+def expand_abbreviations(text):
+    words = text.lower().split()
+    expanded_words = [abbreviations.get(word, word) for word in words]
+    return " ".join(expanded_words)
+
+def is_follow_up(text):
+    text_lower = text.lower()
+    return any(phrase in text_lower for phrase in FOLLOW_UP_PHRASES)
+
+def check_greeting(user_input):
+    processed_input = user_input.lower().strip()
+    if processed_input in greetings:
+        return random.choice(greeting_responses)
+    return None
+
 # ====== Semantic Search ======
 def find_similar_questions(user_input, top_k=3):
     query_embedding = model.encode(user_input, convert_to_tensor=True)
@@ -45,12 +93,12 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     messages.append({"role": "user", "content": prompt})
 
     response = client.chat.completions.create(
-    model="gpt-3.5-turbo",  # more commonly available and cheaper
-    messages=messages,
-    temperature=0.5,
-    max_tokens=300
+        model="gpt-4",
+        messages=messages,
+        temperature=0.5,
+        max_tokens=300
     )
-
+    return response.choices[0].message.content.strip()
 
 # ====== Streamlit UI ======
 st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")
@@ -63,17 +111,33 @@ if "chat_history" not in st.session_state:
 user_input = st.text_input("Ask a question...")
 
 if user_input:
-    with st.spinner("Thinking..."):
-        similar_qas = find_similar_questions(user_input)
-        answer = generate_gpt_answer(user_input, similar_qas, st.session_state.chat_history)
-
-        st.markdown(f"**You:** {user_input}")
-        st.markdown(f"**Bot:** {answer}")
-
+    # First check greetings
+    greeting_reply = check_greeting(user_input)
+    if greeting_reply:
+        st.markdown(f"**Bot:** {greeting_reply}")
         st.session_state.chat_history.append({
             "user": user_input,
-            "bot": answer
+            "bot": greeting_reply
         })
+    else:
+        # Expand abbreviations
+        expanded_input = expand_abbreviations(user_input)
+
+        # Check follow-up phrases (optional usage here, just info)
+        if is_follow_up(expanded_input):
+            st.info("Detected follow-up question, continuing the conversation...")
+
+        with st.spinner("Thinking..."):
+            similar_qas = find_similar_questions(expanded_input)
+            answer = generate_gpt_answer(expanded_input, similar_qas, st.session_state.chat_history)
+
+            st.markdown(f"**You:** {user_input}")
+            st.markdown(f"**Bot:** {answer}")
+
+            st.session_state.chat_history.append({
+                "user": user_input,
+                "bot": answer
+            })
 
 if st.session_state.chat_history:
     st.markdown("### 🗨️ Chat History")

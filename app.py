@@ -73,9 +73,7 @@ def check_greeting(user_input):
     return None
 
 # ====== Initialize OpenAI Client ======
-client = OpenAI(
-  api_key="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"
-)
+api_key="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"
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource

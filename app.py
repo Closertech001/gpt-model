@@ -115,7 +115,7 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     messages.append({"role": "user", "content": prompt})
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4.1",
         messages=messages,
         temperature=0.5,
         max_tokens=300

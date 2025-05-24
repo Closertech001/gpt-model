@@ -505,27 +505,31 @@
   },
   {
     "question": "Who are some academic staff in the department of biological science (Microbiology)?",
-    "answer": "Professors: A.A. Onilude, G.O. Babalola, Senior Lecturers: J.F.O. Sanusi, K.T. Kareem, B.C. Adebayo-Tayo, A.O. Sirajudeen, Lecturers I: R.O. Ishola, A.O. Olanlege, A.O. Sakariyau, Lecturer II: A.O. Adesope, Assistant Lecturer: M. Arowolo"
+    "answer": "Professors: A.A. Onilude, G.O. Babalola | Senior Lecturers: J.F.O. Sanusi, K.T. Kareem, B.C. Adebayo-Tayo, A.O. Sirajudeen | Lecturers I: R.O. Ishola, A.O. Olanlege, A.O. Sakariyau | Lecturer II: A.O. Adesope | Assistant Lecturer: M. Arowolo"
   },
   {
     "question": "Who are the technical staff in department of biological science (Microbiology)?",
-    "answer": "Mr. O.I. Oyelami (Lab Technologist), Miss S.M. Abdulganiyy (Assistant Lab Technologist) 100 Level:"
+    "answer": "Mr. O.I. Oyelami (Lab Technologist) | Miss S.M. Abdulganiyy (Assistant Lab Technologist)"
   },
   {
     "question": "What courses are offered in 100 Level department of biological science (Microbiology)?",
-    "answer": "Labs: Biology, Chemistry, Physics Practical 200 Level:"
+    "answer": "Courses: General Biology, Chemistry, Physics, Mathematics, Computing, and Communication in English | Labs: Biology, Chemistry, Physics Practical:"
+  },
+    {
+    "question": "What Lab praticals that are offered in 100 Level department of biological science (Microbiology)?",
+    "answer": "Labs: Biology, Chemistry, Physics Practical"
   },
   {
     "question": "What courses are offered in 200 Level department of biological science (Microbiology)?",
-    "answer": "Courses: General Microbiology, Biochemistry, Inorganic/Organic Chemistry, Cell Biology, Ecology, Biotechnology, Zoology, Biological Techniques 300 Level:"
+    "answer": "Courses: General Microbiology, Biochemistry, Inorganic/Organic Chemistry, Cell Biology, Ecology, Biotechnology, Zoology, Biological Techniques"
   },
   {
     "question": "What courses are offered in 300 Level department of biological science (Microbiology)?",
-    "answer": "Courses: Fungi, Immunology, Food Microbiology, Enzymology, Soil Microbiology, Bacterial Diversity, Microbial Ecology, SIWES, and Entrepreneurship 400 Level:"
+    "answer": "Courses: Fungi, Immunology, Food Microbiology, Enzymology, Soil Microbiology, Bacterial Diversity, Microbial Ecology, SIWES, and Entrepreneurship"
   },
   {
     "question": "What courses are offered in 400 Level department of biological science (Microbiology)?",
-    "answer": "Courses: Epidemiology, Public Health, Pathogenic Microbiology, Petroleum, Environmental, Industrial Microbiology, Microbial Genetics, Virology, and Project Work DEPARTMENT OF CHEMICAL SCIENCES (BIOCHEMISTRY)"
+    "answer": "Courses: Epidemiology, Public Health, Pathogenic Microbiology, Petroleum, Environmental, Industrial Microbiology, Microbial Genetics, Virology, and Project Work"
   },
   {
     "question": "What are the main objectives of the Department of Chemical Sciences?",
@@ -557,7 +561,7 @@
   },
   {
     "question": "What are the objectives of the Department of Chemical Sciences (Biochemistry) degree?",
-    "answer": "Provide foundational biochemical knowledge and practical skills, Train students to solve theoretical and practical problems, Develop transferable skills for both biochemical and non-biochemical jobs, Prepare students for advanced studies in biochemistry, Promote interdisciplinary approaches to life problems, Emphasize biochemistry\u2019s relevance in industrial, environmental, and technological development."
+    "answer": "Provide foundational biochemical knowledge and practical skills | Train students to solve theoretical and practical problems | Develop transferable skills for both biochemical and non-biochemical jobs | Prepare students for advanced studies in biochemistry | Promote interdisciplinary approaches to life problems | Emphasize biochemistry relevance in industrial, environmental and technological development."
   },
   {
     "question": "What are the unique features of the Department of Chemical Sciences (Biochemistry) programme?",
@@ -609,7 +613,7 @@
   },
   {
     "question": "Who are the College of Natural and Applied Sciences (CONAS) staff?",
-    "answer": "Prof. A.A. Onilude \u2013 Dean | Mrs. N. I. Sanusi \u2013 College Officer | Miss O. Oloyede \u2013 College Clerk"
+    "answer": "Prof. A.A. Onilude Dean | Mrs. N. I. Sanusi College Officer | Miss O. Oloyede College Clerk"
   },
   {
     "question": "Who are the academic staff in the Department of Chemical Sciences (Biochemistry)?",
@@ -657,7 +661,7 @@
   },
   {
     "question": "What laboratories are available for student training in Department of Computer Science?",
-    "answer": "1. Computer Software Laboratory \u2013 40 PCs, standard software tools, operating systems, compilers, and statistical packages. | 2. Computer Hardware Laboratory \u2013 Hands-on experience with hardware repair, troubleshooting, and assembly."
+    "answer": " Computer Software Laboratory, standard software tools, operating systems, compilers, and statistical packages. | Computer Hardware Laboratory Hands-on experience with hardware repair, troubleshooting, and assembly."
   },
   {
     "question": "What is the department of Computer Science focus?",
@@ -701,39 +705,39 @@
   },
   {
     "question": "How is the curriculum structured across the four levels in Department of Computer Science?",
-    "answer": "The curriculum includes courses in mathematics, physics, programming, software engineering, AI, cybersecurity, operating systems, networking, and more\u2014spread across 100 to 400 levels with increasing complexity and practical exposure. 100 Level"
+    "answer": "The curriculum includes courses in mathematics, physics, programming, software engineering, AI, cybersecurity, operating systems, networking, and more spread across 100 to 400 levels with increasing complexity and practical exposure."
   },
   {
     "question": "What courses are offered in 100 Level First Semester Computer Science?",
-    "answer": "GST 111 \u2013 Communication in English (2 units) | MTH 101 \u2013 Elementary Mathematics I (2 units) | PHY 101 \u2013 General Physics I (2 units) | PHY 107 \u2013 General Practical Physics I (1 unit) | STA 111 \u2013 Descriptive Statistics (3 units) | COS 101 \u2013 Introduction to Computing Sciences (3 units) | CUAB-CSC 103 \u2013 Islamic Perspective in ICT (2 units) | CUAB-CSC 105 \u2013 Use of Library for Computer Science Students (2 units) Total Units: 17"
+    "answer": "GST 111 Communication in English (2 units) | MTH 101 Elementary Mathematics I (2 units) | PHY 101 General Physics I (2 units) | PHY 107 General Practical Physics I (1 unit) | STA 111 Descriptive Statistics (3 units) | COS 101 Introduction to Computing Sciences (3 units) | CUAB-CSC 103 Islamic Perspective in ICT (2 units) | CUAB-CSC 105 Use of Library for Computer Science Students (2 units) Total Units: 17"
   },
   {
     "question": "What courses are offered in 100 Level Second Semester in of Department of Computer Science?",
-    "answer": "GST 112 \u2013 Nigerian Peoples and Culture (2 units) | MTH 102 \u2013 Elementary Mathematics II (2 units) | PHY 102 \u2013 General Physics II (2 units) | PHY 108 \u2013 General Practical Physics II (1 unit) | COS 102 \u2013 Problem Solving (3 units) | CUAB-CSC 104 \u2013 System Analysis and Design (2 units) | CUAB-CSC 106 \u2013 Introduction to Algebra (2 units) | CUAB-CSC 108 \u2013 Foundation of Sequential Program (2 units) Total Units: 16 200 Level"
+    "answer": "GST 112 Nigerian Peoples and Culture (2 units) | MTH 102 Elementary Mathematics II (2 units) | PHY 102 General Physics II (2 units) | PHY 108 General Practical Physics II (1 unit) | COS 102 Problem Solving (3 units) | CUAB-CSC 104 System Analysis and Design (2 units) | CUAB-CSC 106 Introduction to Algebra (2 units) | CUAB-CSC 108 Foundation of Sequential Program (2 units) Total Units: 16"
   },
   {
     "question": "What courses are offered in 200 Level First Semester Department of Computer Science?",
-    "answer": "ENT 211 \u2013 Entrepreneurship and Innovation (2 units) | MTH 201 \u2013 Mathematical Methods I (2 units) | COS 201 \u2013 Computer Programming I (3 units) | CSC 203 \u2013 Discrete Structures (2 units) | CSC 299 \u2013 SIWES I (3 units) | IFT 211 \u2013 Digital Logic Design (2 units) | SEN 201 \u2013 Introduction to Software Engineering (2 units) Total Units: 16"
+    "answer": "ENT 211 Entrepreneurship and Innovation (2 units) | MTH 201 Mathematical Methods I (2 units) | COS 201 Computer Programming I (3 units) | CSC 203 Discrete Structures (2 units) | CSC 299 SIWES I (3 units) | IFT 211 Digital Logic Design (2 units) | SEN 201 Introduction to Software Engineering (2 units) Total Units: 16"
   },
   {
     "question": "What courses are offered in 200 Level Second Semester Department of Computer Science?",
-    "answer": "GST 212 \u2013 Philosophy, Logic and Human Existence (2 units) | MTH 202 \u2013 Elementary Differential Equations (2 units) | COS 202 \u2013 Computer Programming II (3 units) | IFT 212 \u2013 Computer Architecture and Organisation (2 units) | CUAB-CSC 204 \u2013 Distributed Computing System (2 units) | CUAB-CSC 206 \u2013 Software Engineering (2 units) | CUAB-CSC 208 \u2013 Introduction to Numerical Analysis (2 units) Total Units: 15 300 Level"
+    "answer": "GST 212 Philosophy, Logic and Human Existence (2 units) | MTH 202 Elementary Differential Equations (2 units) | COS 202 Computer Programming II (3 units) | IFT 212 Computer Architecture and Organisation (2 units) | CUAB-CSC 204 Distributed Computing System (2 units) | CUAB-CSC 206 Software Engineering (2 units) | CUAB-CSC 208 Introduction to Numerical Analysis (2 units) Total Units: 15"
   },
   {
     "question": "What courses are offered in 300 Level First Semester Department of Computer Science?",
-    "answer": "CSC 301 \u2013 Data Structures (3 units) | CSC 309 \u2013 Artificial Intelligence (2 units) | CSC 399 \u2013 SIWES II (3 units) | CYB 201 \u2013 Introduction to Cybersecurity and Strategy (2 units) | ICT 305 \u2013 Data Communication System & Network (3 units) | CUAB-CSC 303 \u2013 Computational Science & Numerical Methods (2 units) Total Units: 15"
+    "answer": "CSC 301 Data Structures (3 units) | CSC 309 Artificial Intelligence (2 units) | CSC 399 SIWES II (3 units) | CYB 201 Introduction to Cybersecurity and Strategy (2 units) | ICT 305 Data Communication System & Network (3 units) | CUAB-CSC 303 Computational Science & Numerical Methods (2 units) Total Units: 15"
   },
   {
     "question": "What courses are offered in 300 Level Second Semester Department of Computer Science?",
-    "answer": "GST 312 \u2013 Peace and Conflict Resolution (2 units) | ENT 312 \u2013 Venture Creation (2 units) | CSC 308 \u2013 Operating Systems (3 units) | CSC 322 \u2013 Computer Science Innovation and New Technologies (2 units) | DTS 304 \u2013 Data Management I (3 units) | CUAB-CSC 302 \u2013 Modelling and Simulation (2 units) | CUAB-CSC 304 \u2013 Formal Language & Automata Theory (2 units) Total Units: 16 400 Level"
+    "answer": "GST 312 Peace and Conflict Resolution (2 units) | ENT 312 Venture Creation (2 units) | CSC 308 Operating Systems (3 units) | CSC 322 Computer Science Innovation and New Technologies (2 units) | DTS 304 Data Management I (3 units) | CUAB-CSC 302 Modelling and Simulation (2 units) | CUAB-CSC 304 Formal Language & Automata Theory (2 units) Total Units: 16"
   },
   {
     "question": "What courses are offered in 400 Level First Semester Department of Computer Science?",
-    "answer": "COS 409 \u2013 Research Methodology and Technical Report Writing (3 units) | CSC 401 \u2013 Algorithms and Complexity Analysis (2 units) | CSC 497 \u2013 Final Year Project I (3 units) | INS 401 \u2013 Project Management (2 units) | CUAB-CSC 403 \u2013 Introduction to Operation Research (2 units) | CUAB-CSC 405 \u2013 Human Computer Interface (2 units) | CUAB-CPS 407 \u2013 Data Visualization for Data-Driven Decision Making (2 units) Total Units: 16"
+    "answer": "COS 409 Research Methodology and Technical Report Writing (3 units) | CSC 401 Algorithms and Complexity Analysis (2 units) | CSC 497 Final Year Project I (3 units) | INS 401 Project Management (2 units) | CUAB-CSC 403 Introduction to Operation Research (2 units) | CUAB-CSC 405 Human Computer Interface (2 units) | CUAB-CPS 407 Data Visualization for Data-Driven Decision Making (2 units) Total Units: 16"
   },
   {
     "question": "What courses are offered in 400 Level Second Semester Department of Computer Science?",
-    "answer": "CSC 402 \u2013 Ethics and Legal Issues in Computer Science (2 units) | CSC 498 \u2013 Final Year Project II (3 units) | CUAB-CSC 404 \u2013 Computer System Performance Evaluation (2 units) (Elective) | CUAB-CSC 406 \u2013 Computer Graphics & Visualization (2 units) (Elective) | CUAB-CSC 408 \u2013 Compiler Construction (2 units) | CUAB-CSC 410 \u2013 Survey of Programming Languages (2 units) | CUAB-CSC 412 \u2013 Internet Technology & Web Programming (2 units) Total Units: 15 DEPARTMENT OF ECONOMICS"
+    "answer": "CSC 402 Ethics and Legal Issues in Computer Science (2 units) | CSC 498 Final Year Project II (3 units) | CUAB-CSC 404 Computer System Performance Evaluation (2 units) (Elective) | CUAB-CSC 406 Computer Graphics & Visualization (2 units) (Elective) | CUAB-CSC 408 Compiler Construction (2 units) | CUAB-CSC 410 Survey of Programming Languages (2 units) | CUAB-CSC 412 Internet Technology & Web Programming (2 units) Total Units: 15"
   },
   {
     "question": "When was the Department of Economics with Operations Research established?",
@@ -753,7 +757,7 @@
   },
   {
     "question": "Who are some of the academic staff and their specializations in Department of Economics with Operations Research?",
-    "answer": "Prof. R.O. Kareem \u2013 Resource and Development Economics, Entrepreneurship | Dr. A.H. Bakare \u2013 Development Economics | Dr. M.A. Isiaka \u2013 International, Financial, Tourism & Managerial Economics | Dr. T.S. Adebayo \u2013 International & Industrial Economics | Dr. O.T. Afolayan \u2013 Human Resource Economics"
+    "answer": "Prof. R.O. Kareem Resource and Development Economics, Entrepreneurship | Dr. A.H. Bakare Development Economics | Dr. M.A. Isiaka International, Financial, Tourism & Managerial Economics | Dr. T.S. Adebayo International & Industrial Economics | Dr. O.T. Afolayan Human Resource Economics"
   },
   {
     "question": "What is the focus of the Department of Economics with Operations Research programme?",
@@ -797,46 +801,46 @@
   },
   {
     "question": "What courses are offered in the B.Sc. Economics with Operations Research?",
-    "answer": "The curriculum includes courses in microeconomics, macroeconomics, statistics, econometrics, development, operations research, and electives across 100\u2013400 levels. 100 Level"
+    "answer": "The curriculum includes courses in microeconomics, macroeconomics, statistics, econometrics, development, operations research, and electives across 100 - 400level."
   },
   {
     "question": "What courses are offered in 100 Level First Semester department Economics with Operations Research?",
-    "answer": "GST 111 \u2013 Communication Skills in English (2 units) | ECO 101 \u2013 Principles of Economics I (2 units) | ECO 103 \u2013 Introductory Mathematics I (2 units) | CUAB-ECO 105 \u2013 Introduction to Statistics for Economics I (2 units) | CUAB-ECO 107 \u2013 Introduction to Finance I (2 units) | CUAB-ECO 109 \u2013 Introduction to Financial Accounting for Economists I (2 units) | CUAB-ECO 111 \u2013 Introduction to Business Economics I (2 units) | CUAB-ECO 113 \u2013 Islamic Economic System (2 units) Total: 16 Units"
+    "answer": "GST 111 Communication Skills in English (2 units) | ECO 101 Principles of Economics I (2 units) | ECO 103 Introductory Mathematics I (2 units) | CUAB-ECO 105 Introduction to Statistics for Economics I (2 units) | CUAB-ECO 107 Introduction to Finance I (2 units) | CUAB-ECO 109 Introduction to Financial Accounting for Economists I (2 units) | CUAB-ECO 111 Introduction to Business Economics I (2 units) | CUAB-ECO 113 \u2013 Islamic Economic System (2 units) Total: 16 Units"
   },
   {
     "question": "What courses are offered in 100 Level Second Semester department Economics with Operations Research?",
-    "answer": "GST 112 \u2013 Nigerian Peoples and Culture (2 units) | ECO 102 \u2013 Principles of Economics II (2 units) | ECO 104 \u2013 Introductory Mathematics II (2 units) | CUAB-ECO 106 \u2013 Introduction to Statistics for Economics II (2 units) | CUAB-ECO 108 \u2013 Introduction to Finance II (2 units) | CUAB-ECO 110 \u2013 Introduction to Financial Accounting for Economists II (2 units) | CUAB-ECO 112 \u2013 Introduction to Business Economics II (2 units) | CUAB-ECO 114 \u2013 Uses of Library and Study Skills for Economists (2 units) Total: 16 Units 200 Level"
+    "answer": "GST 112 Nigerian Peoples and Culture (2 units) | ECO 102 Principles of Economics II (2 units) | ECO 104 Introductory Mathematics II (2 units) | CUAB-ECO 106 Introduction to Statistics for Economics II (2 units) | CUAB-ECO 108 Introduction to Finance II (2 units) | CUAB-ECO 110 Introduction to Financial Accounting for Economists II (2 units) | CUAB-ECO 112 Introduction to Business Economics II (2 units) | CUAB-ECO 114 \u2013 Uses of Library and Study Skills for Economists (2 units) Total: 16 Units"
   },
   {
     "question": "What courses are offered in 200 Level First Semester department Economics with Operations Research?",
-    "answer": "ENT 211 \u2013 Entrepreneurship (2 units) | ECO 201 \u2013 Introduction to Microeconomics I (2 units) | ECO 203 \u2013 Introduction to Macroeconomics I (2 units) | ECO 205 \u2013 Structure of the Nigerian Economy (2 units) | ECO 207 \u2013 Mathematics for Economists (2 units) | CUAB-ECO 209 \u2013 Labour Economics (2 units) | CUAB-ECO 211 \u2013 Tourism Economics (2 units) [Elective] | CUAB-ECO 213 \u2013 Urban and Regional Economics (2 units) | CUAB-ECO 215 \u2013 Industrial Economics (2 units) [Elective] Total: 16 Units"
+    "answer": "ENT 211 Entrepreneurship (2 units) | ECO 201 Introduction to Microeconomics I (2 units) | ECO 203 Introduction to Macroeconomics I (2 units) | ECO 205 Structure of the Nigerian Economy (2 units) | ECO 207 Mathematics for Economists (2 units) | CUAB-ECO 209 Labour Economics (2 units) | CUAB-ECO 211 Tourism Economics (2 units) [Elective] | CUAB-ECO 213 Urban and Regional Economics (2 units) | CUAB-ECO 215 Industrial Economics (2 units) [Elective] Total: 16 Units"
   },
   {
     "question": "What courses are offered in 200 Level Second Semester department Economics with Operations Research?",
-    "answer": "GST 212 \u2013 Philosophy, Logic and Human Existence (2 units) | SSC 202 \u2013 Introduction to Computer and Its Applications (3 units) | ECO 202 \u2013 Introduction to Microeconomics II (2 units) | ECO 204 \u2013 Introduction to Macroeconomics II (2 units) | ECO 206 \u2013 Statistics for Economists (2 units) | CUAB-ECO 208 \u2013 Economics of Development (2 units) | CUAB-ECO 210 \u2013 Transport Economics (2 units) [Elective] Total: 15 Units 300 Level"
+    "answer": "GST 212 Philosophy, Logic and Human Existence (2 units) | SSC 202 Introduction to Computer and Its Applications (3 units) | ECO 202 Introduction to Microeconomics II (2 units) | ECO 204 Introduction to Macroeconomics II (2 units) | ECO 206 Statistics for Economists (2 units) | CUAB-ECO 208 Economics of Development (2 units) | CUAB-ECO 210 Transport Economics (2 units) [Elective] Total: 15 Units 300 Level"
   },
   {
     "question": "What courses are offered in 300 Level First Semester department Economics with Operations Research?",
-    "answer": "ECO 301 \u2013 Intermediate Microeconomics I (2 units) | ECO 303 \u2013 Intermediate Macroeconomics I (2 units) | ECO 305 \u2013 History of Economic Thought (2 units) | ECO 307 \u2013 Project Evaluation (3 units) | SSC 301 \u2013 Innovation in the Social Sciences (2 units) | CUAB-ECO 309 \u2013 Operations Research I (2 units) | CUAB-ECO 311 \u2013 Software Application for Economists (2 units) | CUAB-ECO 313 \u2013 International Economics (2 units) [Elective] | CUAB-ECO 315 \u2013 Public Finance (2 units) [Elective] | CUAB-ECO 317 \u2013 Economics of Corruption (2 units) [Elective] Total: 21 Units"
+    "answer": "ECO 301 Intermediate Microeconomics I (2 units) | ECO 303 Intermediate Macroeconomics I (2 units) | ECO 305 History of Economic Thought (2 units) | ECO 307 Project Evaluation (3 units) | SSC 301 Innovation in the Social Sciences (2 units) | CUAB-ECO 309 Operations Research I (2 units) | CUAB-ECO 311 Software Application for Economists (2 units) | CUAB-ECO 313 International Economics (2 units) [Elective] | CUAB-ECO 315 Public Finance (2 units) [Elective] | CUAB-ECO 317 Economics of Corruption (2 units) [Elective] Total: 21 Units"
   },
   {
     "question": "What courses are offered in 300 Level Second Semester department Economics with Operations Research?",
-    "answer": "GST 312 \u2013 Peace and Conflict Resolution (2 units) | ENT 312 \u2013 Venture Creation (2 units) | ECO 302 \u2013 Intermediate Microeconomics II (2 units) | ECO 304 \u2013 Intermediate Macroeconomics II (2 units) | ECO 306 \u2013 Introductory Econometrics (3 units) | ECO 308 \u2013 Public Sector Economics (2 units) | SSC 302 \u2013 Research Method I (2 units) | CUAB-ECO 310 \u2013 Operations Research II (2 units) Total: 17 Units 400 Level"
+    "answer": "GST 312 Peace and Conflict Resolution (2 units) | ENT 312 Venture Creation (2 units) | ECO 302 Intermediate Microeconomics II (2 units) | ECO 304 Intermediate Macroeconomics II (2 units) | ECO 306 Introductory Econometrics (3 units) | ECO 308 Public Sector Economics (2 units) | SSC 302 Research Method I (2 units) | CUAB-ECO 310 Operations Research II (2 units) Total: 17 Units"
   },
   {
     "question": "What courses are offered in 400 Level First Semester department Economics with Operations Research?",
-    "answer": "ECO 401 \u2013 Advanced Microeconomics I (2 units) | ECO 403 \u2013 Advanced Macroeconomics I (2 units) | ECO 405 \u2013 Economic Planning (3 units) | ECO 407 \u2013 Fiscal Policy and Analysis (3 units) | ECO 499 \u2013 Research Project/Original Essay (6 units) | SSC 401 \u2013 Research Method II (2 units) Total: 18 Units"
+    "answer": "ECO 401 Advanced Microeconomics I (2 units) | ECO 403 Advanced Macroeconomics I (2 units) | ECO 405 Economic Planning (3 units) | ECO 407 Fiscal Policy and Analysis (3 units) | ECO 499 Research Project/Original Essay (6 units) | SSC 401 Research Method II (2 units) Total: 18 Units"
   },
   {
     "question": "What courses are offered in 400 Level Second Semester department Economics with Operations Research?",
-    "answer": "ECO 402 \u2013 Advanced Microeconomics II (2 units) | ECO 404 \u2013 Advanced Macroeconomics II (2 units) | ECO 406 \u2013 Monetary Theory and Policy (3 units) | CUAB-BCO 408 \u2013 Operations Research III (3 units) | CUAB-BCO 410 \u2013 Econometrics (2 units) [Elective] | CUAB-BCO 412 \u2013 Environment and Sustainable Development (2 units) | CUAB-BCO 414 \u2013 Problems and Policies of Development (2 units) [Elective] | CUAB-BCO 416 \u2013 Comparative Economic Systems (2 units) [Elective] | CUAB-BCO 418 \u2013 Health Economics (2 units) [Elective] | CUAB-BCO 420 \u2013 Petroleum and Energy Economics (2 units) Total: 22 Units  (Note: Students are expected to take at least one elective per semester.) DEPARTMENT OF LAW"
+    "answer": "ECO 402 Advanced Microeconomics II (2 units) | ECO 404 Advanced Macroeconomics II (2 units) | ECO 406 Monetary Theory and Policy (3 units) | CUAB-BCO 408 Operations Research III (3 units) | CUAB-BCO 410 Econometrics (2 units) [Elective] | CUAB-BCO 412 Environment and Sustainable Development (2 units) | CUAB-BCO 414 Problems and Policies of Development (2 units) [Elective] | CUAB-BCO 416 Comparative Economic Systems (2 units) [Elective] | CUAB-BCO 418 Health Economics (2 units) [Elective] | CUAB-BCO 420 Petroleum and Energy Economics (2 units) Total: 22 Units  (Note: Students are expected to take at least one elective per semester.)"
   },
   {
     "question": "What is the College colour for final year students' long essay project?",
     "answer": "Black."
   },
   {
-    "question": "What is the University's residential policy in department of law?",
+    "question": "What is the University's residential policy in department of law (LL.B)?",
     "answer": "On-campus residency is compulsory, except for mature/married students with approved exemption."
   },
   {
@@ -848,11 +852,11 @@
     "answer": "To comply with NUC and CLE standards, emphasize societal relevance, and apply legal knowledge to real-world political, economic, and social issues."
   },
   {
-    "question": "What is BACOLAW\u2019s philosophy on student development?",
-    "answer": "\"Mens sana in corpore sano\" \u2013 a sound mind in a sound body."
+    "question": "What is BACOLAW philosophy on student development?",
+    "answer": "Mens sana in corpore sano - a sound mind in a sound body."
   },
   {
-    "question": "What support and activities are provided in LL.B?",
+    "question": "What support and activities are provided in department of law (LL.B)?",
     "answer": "Located at Erelu Abiola Auditorium with lecture halls, tutorial rooms, common rooms, and a 300-seater auditorium."
   },
   {
@@ -888,12 +892,16 @@
     "answer": "Simple black gown with white stripe/head covering | Black/white blouse and skirt | Black skirt suit for formal occasions | Black shoes (no sandals or slippers)"
   },
   {
-    "question": "What are the college\u2019s official publications?",
-    "answer": "Crescent University Law Journal (ISSN 2479-065A) | Books: \"Introduction to African Comparative Law and Related Issues\" and \"Customary Law in African Societies\" | Law Matters magazine (jointly with Mass Communication Dept.)"
+    "question": "What are the college official publications?",
+    "answer": "Crescent University Law Journal (ISSN 2479-065A) | Books: Introduction to African Comparative Law and Related Issues and Customary Law in African Societies | Law Matters magazine"
   },
   {
     "question": "Who are the key administrative figures at BACOLAW?",
-    "answer": "Prof. Momodu Kassim-Momodu (Dean) | Jaleelah Idris (Sub-Dean) | Yunus S. Adesina (Law Librarian) | Department Heads: (Jurisprudence & Int\u2019l Law: Prof. I.F. Akande | Commercial & Property Law: Prof. Peter K. Fogam | Islamic & Customary Law: Dr. Ismail K. Yunus)"
+    "answer": "Prof. Momodu Kassim-Momodu (Dean) | Jaleelah Idris (Sub-Dean) | Yunus S. Adesina (Law Librarian)"
+  },
+  {
+    "question": "Who are the departmental heads for department of law(LL.B)"
+    "answer": "Jurisprudence & Int Law: Prof. I.F. Akande | Commercial & Property Law: Prof. Peter K. Fogam | Islamic & Customary Law: Dr. Ismail K. Yunus"
   },
   {
     "question": "What qualifications are needed for admission into the Department of Law(LL.B) programme?",
@@ -989,11 +997,11 @@
   },
   {
     "question": "What are the elective non-law options in 500 Level Second Semester Department of Law(LL.B)?",
-    "answer": "PIS 202: Introduction to Public Administration | COM 502: Communication Skills II DEPARTMENT OF MASS COMMUNICATION"
+    "answer": "PIS 202: Introduction to Public Administration | COM 502: Communication Skills II"
   },
   {
     "question": "When did the Department of Mass Communication start its B.Sc. programme?",
-    "answer": "In 2006."
+    "answer": "The Department of Mass Communication was established in the 2005/2006 academic session."
   },
   {
     "question": "What is the mission of the Department of Mass Communication?",

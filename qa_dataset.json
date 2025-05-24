@@ -1274,5 +1274,713 @@
   {
     "question": "What is the focus in the final semester Department of Physiology topics (400level second semester)?",
     "answer": "PHY 402: Special Topics | PHY 404: Cardiopulmonary Physiology | PHY 406: Oral Examination | PHY 408: Toxicology | PHY 410: Physiology Genomics | PHY 498: Research Project"
+  },
+  {
+    "question": "What course is GST 111 and how many units is it?",
+    "answer": "Communication in English, 2 units."
+  },
+  {
+    "question": "What course is MTH 101 and how many units is it?",
+    "answer": "Elementary Mathematics I, 2 units."
+  },
+  {
+    "question": "What course is PHY 101 and how many units is it?",
+    "answer": "General Physics I, 2 units."
+  },
+  {
+    "question": "What course is PHY 107 and how many units is it?",
+    "answer": "General Practical Physics I, 1 unit."
+  },
+  {
+    "question": "What course is STA 111 and how many units is it?",
+    "answer": "Descriptive Statistics, 3 units."
+  },
+  {
+    "question": "What course is COS 101 and how many units is it?",
+    "answer": "Introduction to Computing Sciences, 3 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 103 and how many units is it?",
+    "answer": "Islamic Perspective in ICT, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 105 and how many units is it?",
+    "answer": "Use of Library for Computer Science Students, 2 units."
+  },
+  {
+    "question": "What course is GST 112 and how many units is it?",
+    "answer": "Nigerian Peoples and Culture, 2 units."
+  },
+  {
+    "question": "What course is MTH 102 and how many units is it?",
+    "answer": "Elementary Mathematics II, 2 units."
+  },
+  {
+    "question": "What course is PHY 102 and how many units is it?",
+    "answer": "General Physics II, 2 units."
+  },
+  {
+    "question": "What course is PHY 108 and how many units is it?",
+    "answer": "General Practical Physics II, 1 unit."
+  },
+  {
+    "question": "What course is COS 102 and how many units is it?",
+    "answer": "Problem Solving, 3 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 104 and how many units is it?",
+    "answer": "System Analysis and Design, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 106 and how many units is it?",
+    "answer": "Introduction to Algebra, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 108 and how many units is it?",
+    "answer": "Foundation of Sequential Program, 2 units."
+  },
+  {
+    "question": "What course is ENT 211 and how many units is it?",
+    "answer": "Entrepreneurship and Innovation, 2 units."
+  },
+  {
+    "question": "What course is MTH 201 and how many units is it?",
+    "answer": "Mathematical Methods I, 2 units."
+  },
+  {
+    "question": "What course is COS 201 and how many units is it?",
+    "answer": "Computer Programming I, 3 units."
+  },
+  {
+    "question": "What course is CSC 203 and how many units is it?",
+    "answer": "Discrete Structures, 2 units."
+  },
+  {
+    "question": "What course is CSC 299 and how many units is it?",
+    "answer": "SIWES I, 3 units."
+  },
+  {
+    "question": "What course is IFT 211 and how many units is it?",
+    "answer": "Digital Logic Design, 2 units."
+  },
+  {
+    "question": "What course is SEN 201 and how many units is it?",
+    "answer": "Introduction to Software Engineering, 2 units."
+  },
+  {
+    "question": "What course is GST 212 and how many units is it?",
+    "answer": "Philosophy, Logic and Human Existence, 2 units."
+  },
+  {
+    "question": "What course is MTH 202 and how many units is it?",
+    "answer": "Elementary Differential Equations, 2 units."
+  },
+  {
+    "question": "What course is COS 202 and how many units is it?",
+    "answer": "Computer Programming II, 3 units."
+  },
+  {
+    "question": "What course is IFT 212 and how many units is it?",
+    "answer": "Computer Architecture and Organisation, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 204 and how many units is it?",
+    "answer": "Distributed Computing System, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 206 and how many units is it?",
+    "answer": "Software Engineering, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 208 and how many units is it?",
+    "answer": "Introduction to Numerical Analysis, 2 units."
+  },
+  {
+    "question": "What course is CSC 301 and how many units is it?",
+    "answer": "Data Structures, 3 units."
+  },
+  {
+    "question": "What course is CSC 309 and how many units is it?",
+    "answer": "Artificial Intelligence, 2 units."
+  },
+  {
+    "question": "What course is CSC 399 and how many units is it?",
+    "answer": "SIWES II, 3 units."
+  },
+  {
+    "question": "What course is CYB 201 and how many units is it?",
+    "answer": "Introduction to Cybersecurity and Strategy, 2 units."
+  },
+  {
+    "question": "What course is ICT 305 and how many units is it?",
+    "answer": "Data Communication System & Network, 3 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 303 and how many units is it?",
+    "answer": "Computational Science & Numerical Methods, 2 units."
+  },
+  {
+    "question": "What course is GST 312 and how many units is it?",
+    "answer": "Peace and Conflict Resolution, 2 units."
+  },
+  {
+    "question": "What course is ENT 312 and how many units is it?",
+    "answer": "Venture Creation, 2 units."
+  },
+  {
+    "question": "What course is CSC 308 and how many units is it?",
+    "answer": "Operating Systems, 3 units."
+  },
+  {
+    "question": "What course is CSC 322 and how many units is it?",
+    "answer": "Computer Science Innovation and New Technologies, 2 units."
+  },
+  {
+    "question": "What course is DTS 304 and how many units is it?",
+    "answer": "Data Management I, 3 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 302 and how many units is it?",
+    "answer": "Modelling and Simulation, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 304 and how many units is it?",
+    "answer": "Formal Language & Automata Theory, 2 units."
+  },
+  {
+    "question": "What course is COS 409 and how many units is it?",
+    "answer": "Research Methodology and Technical Report Writing, 3 units."
+  },
+  {
+    "question": "What course is CSC 401 and how many units is it?",
+    "answer": "Algorithms and Complexity Analysis, 2 units."
+  },
+  {
+    "question": "What course is CSC 497 and how many units is it?",
+    "answer": "Final Year Project I, 3 units."
+  },
+  {
+    "question": "What course is INS 401 and how many units is it?",
+    "answer": "Project Management, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 403 and how many units is it?",
+    "answer": "Introduction to Operation Research, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 405 and how many units is it?",
+    "answer": "Human Computer Interface, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CPS 407 and how many units is it?",
+    "answer": "Data Visualization for Data-Driven Decision Making, 2 units."
+  },
+  {
+    "question": "What course is CSC 402 and how many units is it?",
+    "answer": "Ethics and Legal Issues in Computer Science, 2 units."
+  },
+  {
+    "question": "What course is CSC 498 and how many units is it?",
+    "answer": "Final Year Project II, 3 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 404 and how many units is it?",
+    "answer": "Computer System Performance Evaluation, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 406 and how many units is it?",
+    "answer": "Computer Graphics & Visualization, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 408 and how many units is it?",
+    "answer": "Compiler Construction, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 410 and how many units is it?",
+    "answer": "Survey of Programming Languages, 2 units."
+  },
+  {
+    "question": "What course is CUAB-CSC 412 and how many units is it?",
+    "answer": "Internet Technology & Web Programming, 2 units."
+  },
+  {
+    "question": "What course is ACROSS 100 and how many units is it?",
+    "answer": "4, 00 units."
+  },
+  {
+    "question": "What course is GST 111 and how many units is it?",
+    "answer": "Communication Skills in English, 2 units."
+  },
+  {
+    "question": "What course is ECO 101 and how many units is it?",
+    "answer": "Principles of Economics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 103 and how many units is it?",
+    "answer": "Introductory Mathematics I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 105 and how many units is it?",
+    "answer": "Introduction to Statistics for Economics I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 107 and how many units is it?",
+    "answer": "Introduction to Finance I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 109 and how many units is it?",
+    "answer": "Introduction to Financial Accounting for Economists I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 111 and how many units is it?",
+    "answer": "Introduction to Business Economics I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 113 and how many units is it?",
+    "answer": "Islamic Economic System, 2 units."
+  },
+  {
+    "question": "What course is GST 112 and how many units is it?",
+    "answer": "Nigerian Peoples and Culture, 2 units."
+  },
+  {
+    "question": "What course is ECO 102 and how many units is it?",
+    "answer": "Principles of Economics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 104 and how many units is it?",
+    "answer": "Introductory Mathematics II, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 106 and how many units is it?",
+    "answer": "Introduction to Statistics for Economics II, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 108 and how many units is it?",
+    "answer": "Introduction to Finance II, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 110 and how many units is it?",
+    "answer": "Introduction to Financial Accounting for Economists II, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 112 and how many units is it?",
+    "answer": "Introduction to Business Economics II, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 114 and how many units is it?",
+    "answer": "Uses of Library and Study Skills for Economists, 2 units."
+  },
+  {
+    "question": "What course is ENT 211 and how many units is it?",
+    "answer": "Entrepreneurship, 2 units."
+  },
+  {
+    "question": "What course is ECO 201 and how many units is it?",
+    "answer": "Introduction to Microeconomics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 203 and how many units is it?",
+    "answer": "Introduction to Macroeconomics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 205 and how many units is it?",
+    "answer": "Structure of the Nigerian Economy, 2 units."
+  },
+  {
+    "question": "What course is ECO 207 and how many units is it?",
+    "answer": "Mathematics for Economists, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 209 and how many units is it?",
+    "answer": "Labour Economics, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 211 and how many units is it?",
+    "answer": "Tourism Economics, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 213 and how many units is it?",
+    "answer": "Urban and Regional Economics, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 215 and how many units is it?",
+    "answer": "Industrial Economics, 2 units."
+  },
+  {
+    "question": "What course is GST 212 and how many units is it?",
+    "answer": "Philosophy, Logic and Human Existence, 2 units."
+  },
+  {
+    "question": "What course is SSC 202 and how many units is it?",
+    "answer": "Introduction to Computer and Its Applications, 3 units."
+  },
+  {
+    "question": "What course is ECO 202 and how many units is it?",
+    "answer": "Introduction to Microeconomics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 204 and how many units is it?",
+    "answer": "Introduction to Macroeconomics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 206 and how many units is it?",
+    "answer": "Statistics for Economists, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 208 and how many units is it?",
+    "answer": "Economics of Development, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 210 and how many units is it?",
+    "answer": "Transport Economics, 2 units."
+  },
+  {
+    "question": "What course is ECO 301 and how many units is it?",
+    "answer": "Intermediate Microeconomics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 303 and how many units is it?",
+    "answer": "Intermediate Macroeconomics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 305 and how many units is it?",
+    "answer": "History of Economic Thought, 2 units."
+  },
+  {
+    "question": "What course is ECO 307 and how many units is it?",
+    "answer": "Project Evaluation, 3 units."
+  },
+  {
+    "question": "What course is SSC 301 and how many units is it?",
+    "answer": "Innovation in the Social Sciences, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 309 and how many units is it?",
+    "answer": "Operations Research I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 311 and how many units is it?",
+    "answer": "Software Application for Economists, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 313 and how many units is it?",
+    "answer": "International Economics, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 315 and how many units is it?",
+    "answer": "Public Finance, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 317 and how many units is it?",
+    "answer": "Economics of Corruption, 2 units."
+  },
+  {
+    "question": "What course is GST 312 and how many units is it?",
+    "answer": "Peace and Conflict Resolution, 2 units."
+  },
+  {
+    "question": "What course is ENT 312 and how many units is it?",
+    "answer": "Venture Creation, 2 units."
+  },
+  {
+    "question": "What course is ECO 302 and how many units is it?",
+    "answer": "Intermediate Microeconomics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 304 and how many units is it?",
+    "answer": "Intermediate Macroeconomics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 306 and how many units is it?",
+    "answer": "Introductory Econometrics, 3 units."
+  },
+  {
+    "question": "What course is ECO 308 and how many units is it?",
+    "answer": "Public Sector Economics, 2 units."
+  },
+  {
+    "question": "What course is SSC 302 and how many units is it?",
+    "answer": "Research Method I, 2 units."
+  },
+  {
+    "question": "What course is CUAB-ECO 310 and how many units is it?",
+    "answer": "Operations Research II, 2 units."
+  },
+  {
+    "question": "What course is ECO 401 and how many units is it?",
+    "answer": "Advanced Microeconomics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 403 and how many units is it?",
+    "answer": "Advanced Macroeconomics I, 2 units."
+  },
+  {
+    "question": "What course is ECO 405 and how many units is it?",
+    "answer": "Economic Planning, 3 units."
+  },
+  {
+    "question": "What course is ECO 407 and how many units is it?",
+    "answer": "Fiscal Policy and Analysis, 3 units."
+  },
+  {
+    "question": "What course is ECO 499 and how many units is it?",
+    "answer": "Research Project/Original Essay, 6 units."
+  },
+  {
+    "question": "What course is SSC 401 and how many units is it?",
+    "answer": "Research Method II, 2 units."
+  },
+  {
+    "question": "What course is ECO 402 and how many units is it?",
+    "answer": "Advanced Microeconomics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 404 and how many units is it?",
+    "answer": "Advanced Macroeconomics II, 2 units."
+  },
+  {
+    "question": "What course is ECO 406 and how many units is it?",
+    "answer": "Monetary Theory and Policy, 3 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 408 and how many units is it?",
+    "answer": "Operations Research III, 3 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 410 and how many units is it?",
+    "answer": "Econometrics, 2 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 412 and how many units is it?",
+    "answer": "Environment and Sustainable Development, 2 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 414 and how many units is it?",
+    "answer": "Problems and Policies of Development, 2 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 416 and how many units is it?",
+    "answer": "Comparative Economic Systems, 2 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 418 and how many units is it?",
+    "answer": "Health Economics, 2 units."
+  },
+  {
+    "question": "What course is CUAB-BCO 420 and how many units is it?",
+    "answer": "Petroleum and Energy Economics, 2 units."
+  },
+  {
+    "question": "What course is LIB 101 and how many units is it?",
+    "answer": "Use of Library, 2 units."
+  },
+  {
+    "question": "What course is LAW 101 and how many units is it?",
+    "answer": "Legal Methods I, 4 units."
+  },
+  {
+    "question": "What course is GNS 101 and how many units is it?",
+    "answer": "Use of English I, 2 units."
+  },
+  {
+    "question": "What course is GNS 105 and how many units is it?",
+    "answer": "Nigerian Peoples and Culture, 1 unit."
+  },
+  {
+    "question": "What course is ENG 107 and how many units is it?",
+    "answer": "Literature in English I, 3 units."
+  },
+  {
+    "question": "What course is SOS 101 and how many units is it?",
+    "answer": "Introduction to Sociology, 3 units."
+  },
+  {
+    "question": "What course is PIS 101 and how many units is it?",
+    "answer": "Introduction to Political Science, 3 units."
+  },
+  {
+    "question": "What course is GNS 103 and how many units is it?",
+    "answer": "Philosophy of Islam I, 1 unit."
+  },
+  {
+    "question": "What course is CPS 101 and how many units is it?",
+    "answer": "Introduction to Computer, 3 units."
+  },
+  {
+    "question": "What course is LAW 102 and how many units is it?",
+    "answer": "Legal Methods II, 4 units."
+  },
+  {
+    "question": "What course is GNS 106 and how many units is it?",
+    "answer": "History & Philosophy of Science, 2 units."
+  },
+  {
+    "question": "What course is GNS 102 and how many units is it?",
+    "answer": "Logic and Philosophy of Human Existence, 1 unit."
+  },
+  {
+    "question": "What course is ENG 108 and how many units is it?",
+    "answer": "Literature in English II, 3 units."
+  },
+  {
+    "question": "What course is PSY 102 and how many units is it?",
+    "answer": "Introduction to Psychology, 3 units."
+  },
+  {
+    "question": "What course is GNS 104 and how many units is it?",
+    "answer": "Philosophy of Islam II, 1 unit."
+  },
+  {
+    "question": "What course is PIS 102 and how many units is it?",
+    "answer": "Nigerian Constitutional Development, 3 units."
+  },
+  {
+    "question": "What course is LPI 201 and how many units is it?",
+    "answer": "Constitutional Law I, 4 units."
+  },
+  {
+    "question": "What course is ICL 201 and how many units is it?",
+    "answer": "Introduction to Islamic Law I, 4 units."
+  },
+  {
+    "question": "What course is LPB 201 and how many units is it?",
+    "answer": "Law of Contract I, 4 units."
+  },
+  {
+    "question": "What course is LPI 203 and how many units is it?",
+    "answer": "Nigerian Legal System I, 4 units."
+  },
+  {
+    "question": "What course is GNS 205 and how many units is it?",
+    "answer": "Intro to Entrepreneurial Studies, 1 unit."
+  },
+  {
+    "question": "What course is GNS 211 and how many units is it?",
+    "answer": "Communication in English, 1 unit."
+  },
+  {
+    "question": "What course is LPI 202 and how many units is it?",
+    "answer": "Constitutional Law II, 4 units."
+  },
+  {
+    "question": "What course is ICL 202 and how many units is it?",
+    "answer": "Introduction to Islamic Law II, 4 units."
+  },
+  {
+    "question": "What course is LPB 202 and how many units is it?",
+    "answer": "Law of Contract II, 4 units."
+  },
+  {
+    "question": "What course is LPI 204 and how many units is it?",
+    "answer": "Nigerian Legal System II, 4 units."
+  },
+  {
+    "question": "What course is FAC 204 and how many units is it?",
+    "answer": "Principles of Crop Production, 3 units."
+  },
+  {
+    "question": "What course is GNS 206 and how many units is it?",
+    "answer": "Practical Entrepreneurial Skills, 1 unit."
+  },
+  {
+    "question": "What course is GNS 212 and how many units is it?",
+    "answer": "Communication in English, 2 units."
+  },
+  {
+    "question": "What course is LPI 301 and how many units is it?",
+    "answer": "Criminal Law I, 4 units."
+  },
+  {
+    "question": "What course is LPB 301 and how many units is it?",
+    "answer": "Law of Torts I, 4 units."
+  },
+  {
+    "question": "What course is LPB 303 and how many units is it?",
+    "answer": "Commercial Law I, 4 units."
+  },
+  {
+    "question": "What course is LPI 303 and how many units is it?",
+    "answer": "ICT Law I, 4 units."
+  },
+  {
+    "question": "What course is GNS 301 and how many units is it?",
+    "answer": "Global Citizenship, Peace & Conflict Resolution, 2 units."
+  },
+  {
+    "question": "What course is LPI 302 and how many units is it?",
+    "answer": "Criminal Law II, 4 units."
+  },
+  {
+    "question": "What course is LPB 302 and how many units is it?",
+    "answer": "Law of Torts II, 4 units."
+  },
+  {
+    "question": "What course is LPB 304 and how many units is it?",
+    "answer": "Commercial Law II, 4 units."
+  },
+  {
+    "question": "What course is TPT 304 and how many units is it?",
+    "answer": "ICT Law II, 4 units."
+  },
+  {
+    "question": "What course is LPI 401 and how many units is it?",
+    "answer": "Law of Evidence I, 4 units."
+  },
+  {
+    "question": "What course is LPB 401 and how many units is it?",
+    "answer": "Property Law I, 4 units."
+  },
+  {
+    "question": "What course is LPB 403 and how many units is it?",
+    "answer": "Equity and Trusts I, 4 units."
+  },
+  {
+    "question": "What course is LPI 402 and how many units is it?",
+    "answer": "Law of Evidence II, 4 units."
+  },
+  {
+    "question": "What course is LPB 402 and how many units is it?",
+    "answer": "Property Law II, 4 units."
+  },
+  {
+    "question": "What course is LPB 404 and how many units is it?",
+    "answer": "Equity and Trusts II, 4 units."
+  },
+  {
+    "question": "What course is LAW 402 and how many units is it?",
+    "answer": "Research Methodology, 2 units."
+  },
+  {
+    "question": "What course is LPI 501 and how many units is it?",
+    "answer": "Jurisprudence and Legal Theory I, 4 units."
+  },
+  {
+    "question": "What course is LPB 501 and how many units is it?",
+    "answer": "Company Law I, 4 units."
+  },
+  {
+    "question": "What course is LPI 502 and how many units is it?",
+    "answer": "Jurisprudence and Legal Theory II, 4 units."
+  },
+  {
+    "question": "What course is LPB 502 and how many units is it?",
+    "answer": "Company Law II, 4 units."
+  },
+  {
+    "question": "What course is LAW 599 and how many units is it?",
+    "answer": "Long Essay, 6 units."
+  },
+  {
+    "question": "What course is PIS 413 and how many units is it?",
+    "answer": "Politics in Communist Party States PIS, 415 units."
+  },
+  {
+    "question": "What course is GNS 201 and how many units is it?",
+    "answer": "French or GNS, 203 units."
+  },
+  {
+    "question": "What course is GNS 202 and how many units is it?",
+    "answer": "French II or GNS, 204 units."
   }
 ]

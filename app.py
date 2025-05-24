@@ -1,78 +1,11 @@
-import re
-import os
-import json
-import random
 import streamlit as st
-from symspellpy.symspellpy import SymSpell, Verbosity
 from sentence_transformers import SentenceTransformer, util
-from openai import OpenAI
+import openai
+import json
+import os
 
-# ====== Abbreviations dictionary and follow-up phrases ======
-abbreviations = {
-    "u": "you", "r": "are", "ur": "your", "ow": "how", "pls": "please", "plz": "please",
-    "tmrw": "tomorrow", "cn": "can", "wat": "what", "cud": "could", "shud": "should",
-    "wud": "would", "abt": "about", "bcz": "because", "bcoz": "because", "btw": "between",
-    "asap": "as soon as possible", "idk": "i don't know", "imo": "in my opinion",
-    "msg": "message", "doc": "document", "d": "the", "yr": "year", "sem": "semester",
-    "dept": "department", "admsn": "admission", "cresnt": "crescent", "uni": "university",
-    "clg": "college", "sch": "school", "info": "information"
-}
-
-FOLLOW_UP_PHRASES = [
-    "what about", "how about", "and then", "next",
-    "after that", "can you tell me more", "more info",
-    "continue", "explain further", "go on", "what happened after"
-]
-
-# ====== Initialize SymSpell for spelling correction =====
-sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
-
-# Load dictionary file for SymSpell (download from https://github.com/wolfgarbe/SymSpell)
-dictionary_path = "frequency_dictionary_en_82_765.txt"
-if not sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1):
-    st.error(f"Failed to load dictionary file for SymSpell: {dictionary_path}")
-
-def normalize_text(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9\s]', '', text)
-    # Remove repeating characters more than twice (e.g. sooo -> so)
-    text = re.sub(r'(.)\1{2,}', r'\1', text)
-    return text
-
-def preprocess_text(text):
-    text = normalize_text(text)
-    words = text.split()
-    expanded = [abbreviations.get(word, word) for word in words]
-    corrected = []
-    for word in expanded:
-        suggestions = sym_spell.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
-        corrected.append(suggestions[0].term if suggestions else word)
-    return ' '.join(corrected)
-
-def is_follow_up(user_input):
-    user_input = user_input.lower()
-    return any(phrase in user_input for phrase in FOLLOW_UP_PHRASES)
-
-# ====== Greetings and responses ======
-greetings = [
-    "hi", "hello", "hey", "hi there", "greetings", "how are you",
-    "how are you doing", "how's it going", "can we talk?",
-    "can we have a conversation?", "okay", "i'm fine", "i am fine"
-]
-
-greeting_responses = [
-    "Hello!", "Hi there!", "Hey!", "Greetings!",
-    "I'm doing well, thank you!", "Sure pal", "Okay"
-]
-
-def check_greeting(user_input):
-    processed_input = user_input.lower().strip()
-    if processed_input in greetings:
-        return random.choice(greeting_responses)
-    return None
-
-# ====== Initialize OpenAI Client ======
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# ====== Configuration ======
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # ====== Load SentenceTransformer Model ======
 @st.cache_resource
@@ -84,7 +17,7 @@ model = load_model()
 # ====== Load Q&A Dataset ======
 @st.cache_resource
 def load_data():
-    with open("qa_dataset.json", "r", encoding="utf-8") as f:
+    with open("qa_dataset.json", "r") as f:
         qa_pairs = json.load(f)
     questions = [item["question"] for item in qa_pairs]
     answers = [item["answer"] for item in qa_pairs]
@@ -111,7 +44,7 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     prompt = f"{context}\nUser's question: {user_question}\nAnswer:"
     messages.append({"role": "user", "content": prompt})
 
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
         model="gpt-4",
         messages=messages,
         temperature=0.5,
@@ -130,33 +63,17 @@ if "chat_history" not in st.session_state:
 user_input = st.text_input("Ask a question...")
 
 if user_input:
-    # First check greetings
-    greeting_reply = check_greeting(user_input)
-    if greeting_reply:
-        st.markdown(f"**Bot:** {greeting_reply}")
+    with st.spinner("Thinking..."):
+        similar_qas = find_similar_questions(user_input)
+        answer = generate_gpt_answer(user_input, similar_qas, st.session_state.chat_history)
+
+        st.markdown(f"**You:** {user_input}")
+        st.markdown(f"**Bot:** {answer}")
+
         st.session_state.chat_history.append({
             "user": user_input,
-            "bot": greeting_reply
+            "bot": answer
         })
-    else:
-        # Preprocess user input
-        preprocessed_input = preprocess_text(user_input)
-
-        # Check for follow-up phrases (optional usage here)
-        if is_follow_up(preprocessed_input):
-            st.info("Detected follow-up question, continuing the conversation...")
-
-        with st.spinner("Thinking..."):
-            similar_qas = find_similar_questions(preprocessed_input)
-            answer = generate_gpt_answer(preprocessed_input, similar_qas, st.session_state.chat_history)
-
-            st.markdown(f"**You:** {user_input}")
-            st.markdown(f"**Bot:** {answer}")
-
-            st.session_state.chat_history.append({
-                "user": user_input,
-                "bot": answer
-            })
 
 if st.session_state.chat_history:
     st.markdown("### 🗨️ Chat History")

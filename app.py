@@ -26,6 +26,31 @@ FOLLOW_UP_PHRASES = [
 # Initialize sym_spell for spelling correction
 sym_spell = SymSpell(max_dictionary_edit_distance=2, prefix_length=7)
 
+def normalize_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\s]', '', text)
+    # Remove repeating characters more than twice (e.g. sooo -> so)
+    text = re.sub(r'(.)\1{2,}', r'\1', text)
+    return text
+
+def preprocess_text(text):
+    text = normalize_text(text)
+    words = text.split()
+    expanded = [abbreviations.get(word, word) for word in words]
+    corrected = []
+    for word in expanded:
+        suggestions = sym_spell.lookup(word, Verbosity.CLOSEST, max_edit_distance=2)
+        corrected.append(suggestions[0].term if suggestions else word)
+    return ' '.join(corrected)
+
+def is_follow_up(user_input):
+    user_input = user_input.lower()
+    return any(phrase in user_input for phrase in FOLLOW_UP_PHRASES)
+
+@st.cache_resource
+def load_model():
+    return SentenceTransformer('all-MiniLM-L6-v2')
+
 # ====== Greetings and responses ======
 greetings = [
     "hi", "hello", "hey", "hi there", "greetings", "how are you",

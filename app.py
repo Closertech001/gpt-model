@@ -45,12 +45,12 @@ def generate_gpt_answer(user_question, top_matches, chat_history):
     messages.append({"role": "user", "content": prompt})
 
     response = client.chat.completions.create(
-        model="gpt-4",
-        messages=messages,
-        temperature=0.5,
-        max_tokens=300
+    model="gpt-3.5-turbo",  # more commonly available and cheaper
+    messages=messages,
+    temperature=0.5,
+    max_tokens=300
     )
-    return response.choices[0].message.content.strip()
+
 
 # ====== Streamlit UI ======
 st.set_page_config(page_title="Crescent University Chatbot", page_icon="🎓")

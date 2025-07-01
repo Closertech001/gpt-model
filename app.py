@@ -44,3 +44,11 @@ if user_input := st.chat_input("Ask about admissions, courses, etc..."):
         {"role": "assistant", "content": response}
     ])
     log_conversation(user_input, response)
+
+with st.sidebar:
+    st.subheader("AI Settings")
+    use_openai = st.toggle("Use OpenAI GPT", True)
+    if st.session_state.get("use_openai") != use_openai:
+        st.session_state.use_openai = use_openai
+        chat_engine.config["use_openai"] = use_openai
+        st.rerun()

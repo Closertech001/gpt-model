@@ -1,12 +1,13 @@
 from pathlib import Path
 import os
+import json
 import torch
 from dotenv import load_dotenv
-from typing import Dict, Any
+from typing import Dict, Any, List
 import streamlit as st
 
 class ConfigManager:
-    """Safe configuration manager for Streamlit Cloud"""
+    """Robust configuration manager with JSON validation"""
     
     def __init__(self):
         load_dotenv()
@@ -16,66 +17,60 @@ class ConfigManager:
     @property
     def settings(self) -> Dict[str, Any]:
         return {
-            # Path configurations
             "data_dir": self.base_dir / "data",
-            "log_dir": self.base_dir / "logs",
-            
-            # Model configurations
-            "embedding_model": "all-MiniLM-L6-v2",
-            "fallback_model": "microsoft/Phi-3-mini-4k-instruct",
-            "device": self._detect_device(),
-            
-            # API configurations
-            "use_openai": True,
-            "openai_model": "gpt-3.5-turbo",
-            
-            # File paths (with existence checks)
             "abbreviations": self._load_abbreviations(),
             "synonyms": self._load_synonyms(),
-            "qa_data": self._load_qa_data()
+            "qa_data": self._load_qa_data(),
+            "device": self._detect_device()
         }
     
     def _detect_device(self) -> str:
-        """Auto-select best available device"""
-        if torch.cuda.is_available():
-            return "cuda"
-        return "cpu"
+        return "cuda" if torch.cuda.is_available() else "cpu"
     
     def _validate_paths(self) -> None:
-        """Ensure required directories exist"""
         (self.base_dir / "data").mkdir(exist_ok=True)
-        (self.base_dir / "logs").mkdir(exist_ok=True)
     
     def _load_abbreviations(self) -> Dict[str, str]:
-        """Load abbreviations with fallback"""
-        default = {"u": "you", "r": "are"}  # Embedded fallback
+        default = {"u": "you", "r": "are"}
+        path = self.base_dir / "data" / "abbreviations.csv"
         try:
-            with open(self.base_dir / "data" / "abbreviations.csv") as f:
-                return {line.split(",")[0]: line.split(",")[1].strip() 
-                        for line in f if line.strip()}
-        except FileNotFoundError:
-            st.warning("Using default abbreviations")
+            if path.exists():
+                with open(path) as f:
+                    return dict(line.strip().split(",", 1) for line in f if line.strip())
+            return default
+        except Exception as e:
+            st.warning(f"Abbreviations load failed: {e}")
             return default
     
     def _load_synonyms(self) -> Dict[str, str]:
-        """Load synonyms with fallback"""
         default = {"hod": "head of department"}
+        path = self.base_dir / "data" / "synonyms.csv"
         try:
-            with open(self.base_dir / "data" / "synonyms.csv") as f:
-                return {line.split(",")[0]: line.split(",")[1].strip() 
-                        for line in f if line.strip()}
-        except FileNotFoundError:
-            st.warning("Using default synonyms")
+            if path.exists():
+                with open(path) as f:
+                    return dict(line.strip().split(",", 1) for line in f if line.strip())
+            return default
+        except Exception as e:
+            st.warning(f"Synonyms load failed: {e}")
             return default
     
-    def _load_qa_data(self) -> Dict[str, str]:
-        """Load QA dataset with empty fallback"""
+    def _load_qa_data(self) -> List[Dict[str, str]]:
+        path = self.base_dir / "data" / "qa_dataset.json"
+        if not path.exists():
+            st.error(f"QA dataset missing at {path}")
+            return []
+        
         try:
-            with open(self.base_dir / "data" / "qa_dataset.json") as f:
-                return json.load(f)
-        except FileNotFoundError:
-            st.error("QA dataset missing! Some features may not work")
+            with open(path) as f:
+                data = json.load(f)
+                if not isinstance(data, list):
+                    raise ValueError("QA data must be a list of dicts")
+                return data
+        except json.JSONDecodeError as e:
+            st.error(f"Invalid JSON in QA file: {e}")
+            return []
+        except Exception as e:
+            st.error(f"QA data load failed: {e}")
             return []
 
-# Singleton instance
 config = ConfigManager().settings

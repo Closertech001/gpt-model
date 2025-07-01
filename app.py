@@ -3,80 +3,70 @@ from utils.config import config
 from pathlib import Path
 import json
 
-# --- Initial Checks ---
-def verify_setup():
-    """Validate required files exist"""
-    errors = []
+# --- Setup Validation ---
+def validate_qa_data(data: list) -> bool:
+    if not data:
+        st.error("No QA data loaded! Using fallback mode")
+        return False
     
-    if not config["qa_data"]:
-        errors.append("QA dataset not loaded")
+    required_keys = {"question", "answer"}
+    for i, item in enumerate(data, 1):
+        if not isinstance(item, dict):
+            st.error(f"Item {i} is not a dictionary")
+            return False
+        if not required_keys.issubset(item.keys()):
+            st.error(f"Item {i} missing required keys")
+            return False
     
-    required_dirs = ["data_dir", "log_dir"]
-    for d in required_dirs:
-        if not Path(config[d]).exists():
-            errors.append(f"Directory missing: {config[d]}")
-    
-    if errors:
-        st.error("Setup issues found:\n- " + "\n- ".join(errors))
-        st.stop()
+    return True
 
-verify_setup()
-
-# --- Chat UI ---
-st.title("🎓 Crescent University Chatbot")
-st.caption("Safe deployment version")
-
-# Session state initialization
-if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "Ask me about admissions, courses, or fees!"}
+if not validate_qa_data(config["qa_data"]):
+    config["qa_data"] = [  # Fallback data
+        {"question": "What are the admission requirements?", "answer": "Minimum 5 credits including Math and English"}
     ]
 
-# Display chat history
+# --- Chat Interface ---
+st.title("🎓 Crescent University Chatbot")
+
+if "messages" not in st.session_state:
+    st.session_state.messages = [
+        {"role": "assistant", "content": "How can I help with Crescent University?"}
+    ]
+
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# --- Processing Pipeline ---
-def generate_response(query: str) -> str:
-    """Simplified response generator"""
+# --- Response Generation ---
+def get_response(query: str) -> str:
+    query = query.lower()
+    
     # 1. Check exact matches
     for qa in config["qa_data"]:
-        if query.lower() == qa["question"].lower():
+        if query == qa["question"].lower():
             return qa["answer"]
     
-    # 2. Check abbreviations/synonyms
-    normalized = query.lower()
-    for abbr, full in config["abbreviations"].items():
-        normalized = normalized.replace(abbr, full)
+    # 2. Check keywords
+    if "admission" in query:
+        return "Admissions require 5 O'Level credits. Apply via our website."
+    if "fee" in query:
+        return "Tuition ranges from ₦500,000 to ₦800,000 per session."
     
-    # 3. Fallback response
-    return "I'm still learning! Please contact admissions for detailed queries."
+    return "I don't have that information. Please contact admissions@crescent.edu.ng"
 
-# --- Main Chat Loop ---
-if prompt := st.chat_input("Your question..."):
-    # Add user message to history
+if prompt := st.chat_input("Ask about admissions, fees, etc..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     
-    # Generate and display response
-    with st.spinner("Thinking..."):
-        response = generate_response(prompt)
+    with st.spinner("Searching knowledge base..."):
+        response = get_response(prompt)
     
-    # Add assistant response
     st.session_state.messages.append({"role": "assistant", "content": response})
-    
-    # Rerun to update UI
     st.rerun()
 
-# --- Footer ---
-st.divider()
-st.markdown("""
-**Data Files Loaded:**
-- Abbreviations: `{}` entries  
-- Synonyms: `{}` entries  
-- QA Pairs: `{}` questions
-""".format(
-    len(config["abbreviations"]),
-    len(config["synonyms"]),
-    len(config["qa_data"])
-))
+# --- Debug Panel ---
+with st.expander("Debug Info"):
+    st.json({
+        "loaded_qa_pairs": len(config["qa_data"]),
+        "abbreviations": len(config["abbreviations"]),
+        "synonyms": len(config["synonyms"])
+    })

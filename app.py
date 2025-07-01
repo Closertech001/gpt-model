@@ -1,11 +1,18 @@
 import streamlit as st
-from core.chat_engine import ChatEngine
-from utils.config import load_config
-from utils.logger import log_conversation
+from utils.config import ConfigManager
+import os
+
+# Streamlit-specific optimizations
+@st.cache_resource
+def load_resources():
+    config = ConfigManager().settings
+    chat_engine = ChatEngine(config)
+    return chat_engine
 
 # Initialize with config
 config = load_config()
-chat_engine = ChatEngine(config)
+st.set_page_config(layout="wide")
+chat_engine = load_resources()
 
 st.title("🎓 Crescent University Chatbot")
 

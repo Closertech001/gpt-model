@@ -64,9 +64,20 @@ class ChatEngine:
             return llm_response, 0.5
         except Exception:
             return self.fallback.generate(query), 0.3
-
+            
+    # Add to ChatEngine class
     def _call_llm(self, query: str) -> str:
-        """Call OpenAI with conversation context"""
-        messages = self.memory.build_llm_prompt(query)
-        # Implement OpenAI call here
-        return "Response from LLM"
+        """Attempt LLM response with fallback"""
+        try:
+            if self.config["use_openai"]:  # Set in config
+                messages = self.memory.build_llm_prompt(query)
+                response = openai.ChatCompletion.create(
+                    model="gpt-4",
+                    messages=messages,
+                    temperature=0.5
+                )
+                return response.choices[0].message.content
+            raise Exception("OpenAI disabled in config")  # Force fallback
+        except Exception as e:
+            print(f"LLM Error: {e}")
+            return self.fallback.generate(query)

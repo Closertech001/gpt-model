@@ -1,61 +1,82 @@
 import streamlit as st
-from utils.config import ConfigManager
-import os
+from utils.config import config
+from pathlib import Path
+import json
 
-# Streamlit-specific optimizations
-@st.cache_resource
-def load_resources():
-    config = ConfigManager().settings
-    chat_engine = ChatEngine(config)
-    return chat_engine
+# --- Initial Checks ---
+def verify_setup():
+    """Validate required files exist"""
+    errors = []
+    
+    if not config["qa_data"]:
+        errors.append("QA dataset not loaded")
+    
+    required_dirs = ["data_dir", "log_dir"]
+    for d in required_dirs:
+        if not Path(config[d]).exists():
+            errors.append(f"Directory missing: {config[d]}")
+    
+    if errors:
+        st.error("Setup issues found:\n- " + "\n- ".join(errors))
+        st.stop()
 
-# Initialize with config
-config = load_config()
-st.set_page_config(layout="wide")
-chat_engine = load_resources()
+verify_setup()
 
+# --- Chat UI ---
 st.title("🎓 Crescent University Chatbot")
+st.caption("Safe deployment version")
 
 # Session state initialization
-if "memory" not in st.session_state:
-    st.session_state.memory = chat_engine.init_memory()
 if "messages" not in st.session_state:
-    st.session_state.messages = [{"role": "assistant", "content": config["welcome_message"]}]
+    st.session_state.messages = [
+        {"role": "assistant", "content": "Ask me about admissions, courses, or fees!"}
+    ]
 
-# Chat UI
+# Display chat history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# API Key Input (Fallback)
-if not chat_engine.check_openai_key():
-    with st.sidebar:
-        api_key = st.text_input("Enter OpenAI API Key", type="password")
-        if api_key:
-            chat_engine.set_api_key(api_key)
-
-# Processing user input
-if user_input := st.chat_input("Ask about admissions, courses, etc..."):
-    with st.chat_message("user"):
-        st.markdown(user_input)
+# --- Processing Pipeline ---
+def generate_response(query: str) -> str:
+    """Simplified response generator"""
+    # 1. Check exact matches
+    for qa in config["qa_data"]:
+        if query.lower() == qa["question"].lower():
+            return qa["answer"]
     
+    # 2. Check abbreviations/synonyms
+    normalized = query.lower()
+    for abbr, full in config["abbreviations"].items():
+        normalized = normalized.replace(abbr, full)
+    
+    # 3. Fallback response
+    return "I'm still learning! Please contact admissions for detailed queries."
+
+# --- Main Chat Loop ---
+if prompt := st.chat_input("Your question..."):
+    # Add user message to history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    
+    # Generate and display response
     with st.spinner("Thinking..."):
-        response = chat_engine.process_query(user_input)
+        response = generate_response(prompt)
     
-    with st.chat_message("assistant"):
-        st.markdown(response)
+    # Add assistant response
+    st.session_state.messages.append({"role": "assistant", "content": response})
     
-    # Update memory and logs
-    st.session_state.messages.extend([
-        {"role": "user", "content": user_input},
-        {"role": "assistant", "content": response}
-    ])
-    log_conversation(user_input, response)
+    # Rerun to update UI
+    st.rerun()
 
-with st.sidebar:
-    st.subheader("AI Settings")
-    use_openai = st.toggle("Use OpenAI GPT", True)
-    if st.session_state.get("use_openai") != use_openai:
-        st.session_state.use_openai = use_openai
-        chat_engine.config["use_openai"] = use_openai
-        st.rerun()
+# --- Footer ---
+st.divider()
+st.markdown("""
+**Data Files Loaded:**
+- Abbreviations: `{}` entries  
+- Synonyms: `{}` entries  
+- QA Pairs: `{}` questions
+""".format(
+    len(config["abbreviations"]),
+    len(config["synonyms"]),
+    len(config["qa_data"])
+))

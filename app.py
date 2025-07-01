@@ -1,72 +1,91 @@
 import streamlit as st
 from utils.config import config
-from pathlib import Path
-import json
+import random
+import time
 
-# --- Setup Validation ---
-def validate_qa_data(data: list) -> bool:
-    if not data:
-        st.error("No QA data loaded! Using fallback mode")
-        return False
-    
-    required_keys = {"question", "answer"}
-    for i, item in enumerate(data, 1):
-        if not isinstance(item, dict):
-            st.error(f"Item {i} is not a dictionary")
-            return False
-        if not required_keys.issubset(item.keys()):
-            st.error(f"Item {i} missing required keys")
-            return False
-    
-    return True
-
-if not validate_qa_data(config["qa_data"]):
-    config["qa_data"] = [  # Fallback data
-        {"question": "What are the admission requirements?", "answer": "Minimum 5 credits including Math and English"}
+# --- Response Handlers ---
+def handle_greeting() -> str:
+    """Return context-aware greetings"""
+    greetings = [
+        "Hello! How can I help you with Crescent University today?",
+        "Hi there! Ask me about admissions, courses, or campus life.",
+        "Welcome! I'm your Crescent University assistant. What would you like to know?"
     ]
+    return random.choice(greetings)
 
-# --- Chat Interface ---
-st.title("🎓 Crescent University Chatbot")
+def handle_question(query: str) -> str:
+    """Process user questions with multiple fallback layers"""
+    query = query.lower().strip()
+    
+    # 1. Check exact matches
+    for qa in config["qa_data"]:
+        if query == qa["question"].lower().strip():
+            return qa["answer"]
+    
+    # 2. Check keyword matches
+    keyword_responses = {
+        "admission": "Admission requires 5 O'Level credits including Math and English. Apply online at crescent.edu.ng",
+        "fee": "Undergraduate fees range from ₦500,000 to ₦800,000 per session depending on your program.",
+        "hostel": "On-campus hostel fees are ₦150,000 per session. Off-campus options available nearby.",
+        "course": "We offer programs in Computer Science, Law, Accounting, and more. See our website for details."
+    }
+    
+    for keyword, response in keyword_responses.items():
+        if keyword in query:
+            return response
+    
+    # 3. Final fallback
+    return "I'm still learning about that topic. For detailed help, please email info@crescent.edu.ng"
 
+# --- Session Initialization ---
 if "messages" not in st.session_state:
-    st.session_state.messages = [
-        {"role": "assistant", "content": "How can I help with Crescent University?"}
-    ]
+    st.session_state.messages = []
+    st.session_state.first_interaction = True
 
+# --- Chat UI ---
+st.title("🎓 Crescent University Assistant")
+st.caption("Ask about admissions, fees, courses, or campus life")
+
+# Display chat history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
-# --- Response Generation ---
-def get_response(query: str) -> str:
-    query = query.lower()
-    
-    # 1. Check exact matches
-    for qa in config["qa_data"]:
-        if query == qa["question"].lower():
-            return qa["answer"]
-    
-    # 2. Check keywords
-    if "admission" in query:
-        return "Admissions require 5 O'Level credits. Apply via our website."
-    if "fee" in query:
-        return "Tuition ranges from ₦500,000 to ₦800,000 per session."
-    
-    return "I don't have that information. Please contact admissions@crescent.edu.ng"
+# Handle first interaction
+if st.session_state.first_interaction:
+    with st.chat_message("assistant"):
+        greeting = handle_greeting()
+        st.markdown(greeting)
+        st.session_state.messages.append({"role": "assistant", "content": greeting})
+        st.session_state.first_interaction = False
 
-if prompt := st.chat_input("Ask about admissions, fees, etc..."):
+# Process user input
+if prompt := st.chat_input("Type your question here..."):
+    # Add user message to history
+    with st.chat_message("user"):
+        st.markdown(prompt)
     st.session_state.messages.append({"role": "user", "content": prompt})
     
-    with st.spinner("Searching knowledge base..."):
-        response = get_response(prompt)
+    # Generate and display response
+    with st.chat_message("assistant"):
+        if any(greet in prompt.lower() for greet in ["hi", "hello", "hey"]):
+            response = handle_greeting()
+        else:
+            with st.spinner("Finding the best answer..."):
+                time.sleep(0.5)  # Simulate processing
+                response = handle_question(prompt)
+        
+        st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
     
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    # Ensure UI updates
     st.rerun()
 
-# --- Debug Panel ---
-with st.expander("Debug Info"):
-    st.json({
-        "loaded_qa_pairs": len(config["qa_data"]),
-        "abbreviations": len(config["abbreviations"]),
-        "synonyms": len(config["synonyms"])
-    })
+# Debug panel (visible only during development)
+if st.secrets.get("DEBUG_MODE", False):
+    with st.expander("Debug Info"):
+        st.json({
+            "qa_pairs_loaded": len(config["qa_data"]),
+            "last_query": prompt if 'prompt' in locals() else None,
+            "session_messages": st.session_state.messages
+        })

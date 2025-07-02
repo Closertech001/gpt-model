@@ -20,9 +20,8 @@ PERSONALITY = {
     }
 }
 
-# --- Enhanced Response Handlers ---
+# --- Greeting Generator ---
 def generate_greeting() -> str:
-    """Time-aware personalized greetings"""
     hour = datetime.now().hour
     if 5 <= hour < 12:
         time_greet = random.choice(["Good morning", "Morning"])
@@ -30,13 +29,11 @@ def generate_greeting() -> str:
         time_greet = random.choice(["Good afternoon", "Afternoon"])
     else:
         time_greet = random.choice(["Good evening", "Evening"])
-    
     return f"{time_greet}! I'm {PERSONALITY['name']}, your Crescent University assistant. How can I help you today?"
 
+# --- Small Talk Handler ---
 def handle_small_talk(query: str) -> str:
-    """Natural conversation responses"""
     query = query.lower()
-    
     responses = {
         "how are you": [
             "I'm doing great! Ready to help you with university matters.",
@@ -51,70 +48,46 @@ def handle_small_talk(query: str) -> str:
         "who made you": [
             "I was created by the university's tech team to assist students like you!",
             "The Computer Science department gave me digital life!",
-            "I'm a proud creation of Crescent University's AI initiative"
-        ]
+            "I'm a proud creation of Crescent University's AI initiative."
+        ],
+        "hi": ["Hey there! 😊", "Hi! How can I help you today?"],
+        "hello": ["Hello! 👋", "Hi there! Got any questions about the university?"],
+        "bye": ["Take care! Feel free to come back anytime.", "Goodbye! All the best."]
     }
-    
     for phrase, replies in responses.items():
         if phrase in query:
             return random.choice(replies)
     return None
 
-def formulate_response(query: str, context: dict) -> str:
-    """Human-like response formulation"""
-    # 1. Check for small talk
-    if small_talk_response := handle_small_talk(query):
-        return small_talk_response
-    
-    # 2. Add thinking phrases
-    thinking_phrases = [
-        "Let me look that up...",
-        "Checking my knowledge base...",
-        "One moment please...",
-        *PERSONALITY["speech_patterns"]["encouraging"]
-    ]
-    
-    # 3. Find factual response
-    response = find_factual_answer(query) or \
-               "I'm still learning about that. For official information, please contact admissions@crescent.edu.ng"
-    
-    # 4. Add human touches
-    if random.random() < PERSONALITY["traits"]["enthusiasm"]:
-        enhancers = ["By the way", "Did you know", "Oh and"]
-        if random.random() < 0.3:
-            response += f" {random.choice(enhancers)}, our campus has beautiful gardens!"
-    
-    return response
-
+# --- Factual Answer Lookup ---
 def find_factual_answer(query: str) -> str:
-    """Multi-layered knowledge lookup"""
     query = query.lower().strip()
-    
-    # 1. Exact match
+
+    # 1. Exact Match
     for qa in config["qa_data"]:
         if query == qa["question"].lower().strip():
             return qa["answer"]
-    
-    # 2. Keyword match
+
+    # 2. Keyword Matching
     keyword_map = {
         "admiss": ["admission", "apply", "requirement"],
         "fee": ["fee", "tuition", "payment"],
         "course": ["course", "program", "curriculum"],
         "hostel": ["hostel", "accommodation", "housing"]
     }
-    
+
     for category, keywords in keyword_map.items():
         if any(kw in query for kw in keywords):
             return get_category_response(category)
-    
+
     return None
 
+# --- Category-Based Fallbacks ---
 def get_category_response(category: str) -> str:
-    """Contextual responses with variations"""
     responses = {
         "admiss": [
             "Admissions require 5 credits including Math and English. The cut-off is usually 180+ in UTME.",
-            "For admission, you'll need your O'Level results and UTME score. Applications are online at crescent.edu.ng/apply"
+            "For admission, you'll need your O'Level results and UTME score. Applications are online at crescent.edu.ng/apply."
         ],
         "fee": [
             "Tuition ranges from ₦500k to ₦800k per session. There's also a ₦50k acceptance fee.",
@@ -123,11 +96,42 @@ def get_category_response(category: str) -> str:
         "course": [
             "We offer BSc programs in CS, Microbiology, Accounting, and more. Full list on our website!",
             "Popular courses include Computer Science (with AI specialization), Law, and Mass Communication."
+        ],
+        "hostel": [
+            "Yes, Crescent University offers on-campus hostel accommodation for both male and female students.",
+            "Our hostels are comfortable, secure, and located within the university premises. Fees depend on the room type."
         ]
     }
     return random.choice(responses.get(category, ["I'll need to check that for you."]))
 
-# --- Session Management ---
+# --- Response Formulation ---
+def formulate_response(query: str, context: dict) -> str:
+    if small_talk := handle_small_talk(query):
+        return small_talk
+
+    # Add natural thinking pause
+    thinking_phrases = [
+        "Let me look that up...",
+        "Checking my knowledge base...",
+        "One moment please...",
+        *PERSONALITY["speech_patterns"]["encouraging"]
+    ]
+
+    factual = find_factual_answer(query)
+    if not factual:
+        return "Hmm, I’m not sure about that yet. You can reach out to admissions@crescent.edu.ng or ask me something else!"
+
+    response = random.choice(thinking_phrases) + "\n\n" + factual
+
+    # Add human-like flair
+    if random.random() < PERSONALITY["traits"]["enthusiasm"]:
+        enhancers = ["By the way", "Did you know", "Oh and"]
+        if random.random() < 0.3:
+            response += f" {random.choice(enhancers)}, our campus has beautiful gardens!"
+
+    return response
+
+# --- Streamlit Session Management ---
 if "messages" not in st.session_state:
     st.session_state.update({
         "messages": [],
@@ -140,14 +144,14 @@ if "messages" not in st.session_state:
 st.title(f"🤖 {PERSONALITY['name']}")
 st.caption("Your human-like university assistant")
 
-# Display chat history
+# Display message history
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
         if msg.get("typing"):
             st.caption("...typing")
 
-# First interaction greeting
+# Initial Greeting
 if st.session_state["first_interaction"]:
     with st.chat_message("assistant"):
         greeting = generate_greeting()
@@ -155,22 +159,19 @@ if st.session_state["first_interaction"]:
         st.session_state.messages.append({"role": "assistant", "content": greeting})
         st.session_state["first_interaction"] = False
 
-# Process user input
+# Chat Input
 if prompt := st.chat_input("Type your message..."):
-    # Store user message
     st.session_state.messages.append({"role": "user", "content": prompt})
-    
-    # Generate response
+
+    # Simulate response
     with st.chat_message("assistant"):
-        # Simulate typing
         with st.empty():
             st.markdown("...")
             time.sleep(random.uniform(0.3, 1.2))
-        
-        # Get and display response
+
         response = formulate_response(prompt, st.session_state["context"])
-        
-        # Type out response gradually
+
+        # Gradual typing effect
         display_text = ""
         placeholder = st.empty()
         for char in response:
@@ -178,13 +179,28 @@ if prompt := st.chat_input("Type your message..."):
             placeholder.markdown(display_text + "▌")
             time.sleep(random.uniform(0.02, 0.08))
         placeholder.markdown(display_text)
-    
-    # Store assistant response
+
     st.session_state.messages.append({
         "role": "assistant",
         "content": response,
         "typing": False
     })
-    
-    # Update context
+
+    # Context tracking
     st.session_state["context"]["last_topic"] = prompt.lower()
+    if "memory" not in st.session_state:
+        st.session_state.memory = {
+            "known_topics": set(),
+            "user_preferences": {}
+        }
+
+    # Prompt for more after multiple interactions
+    user_turns = len([m for m in st.session_state.messages if m["role"] == "user"])
+    if user_turns > 4:
+        follow_up = "\n\nIs there anything else you'd like to know?"
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": follow_up,
+            "typing": False
+        })
+        st.chat_message("assistant").markdown(follow_up)
